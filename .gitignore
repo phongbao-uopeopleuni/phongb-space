@@ -1,0 +1,11 @@
+node_modules
+dist
+*.local
+.DS_Store
+.vite
+
+# Cai dat cuc bo cua Claude Code, khong chia se qua repo
+.claude/settings.local.json
+
+# og-image.png KHONG bi ignore: file nay duoc commit vao repo vi crawler cua Facebook
+# va Zalo phai tai duoc no qua URL tuyet doi sau khi deploy.
