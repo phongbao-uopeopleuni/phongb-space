@@ -9,8 +9,9 @@ export const CONTACT = {
   email: 'baophongcmu@gmail.com',
   // Hien thi cho nguoi doc
   phoneDisplay: '077 575 3003',
-  // Dang E.164 dung cho href tel: va zalo.me — Zalo chi nhan so khong khoang trang
-  phoneRaw: '0775753003',
+  // Dang E.164 dung cho href tel: va schema.org, quay dung ca o ngoai Viet Nam
+  phoneE164: '+84775753003',
+  // Zalo dung so noi dia khong co khoang trang
   zalo: 'https://zalo.me/0775753003',
   github: 'https://github.com/phongbao-uopeopleuni',
   facebook: 'https://www.facebook.com/pbao280/',

@@ -546,7 +546,14 @@ function readStoredLang(): Lang {
 }
 
 export function I18nProvider({ children }: { children: ReactNode }) {
-  const [lang, setLangState] = useState<Lang>(readStoredLang);
+  // Ban SSR va lan hydrate dau tien luon la tieng Viet de markup khop tuyet doi.
+  // Lua chon da luu chi duoc khoi phuc sau khi React gan xong tuong tac.
+  const [lang, setLangState] = useState<Lang>('vi');
+
+  useEffect(() => {
+    const stored = readStoredLang();
+    if (stored !== 'vi') setLangState(stored);
+  }, []);
 
   const setLang = useCallback((next: Lang) => {
     setLangState(next);

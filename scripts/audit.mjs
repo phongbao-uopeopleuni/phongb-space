@@ -12,11 +12,18 @@
  */
 import { launch } from 'chrome-launcher';
 import lighthouse from 'lighthouse';
+import { chromium } from 'playwright';
 
 const URL_TARGET = process.argv[2] ?? 'http://localhost:4173/phongb-space/';
 const FORM_FACTOR = process.argv[3] ?? 'mobile';
+const ASSERT_BUDGETS = process.argv.includes('--assert');
 
-const chrome = await launch({ chromeFlags: ['--headless=new', '--no-sandbox'] });
+// Dung dung Chromium ma Playwright cai cho smoke test: local va CI do cung mot trinh
+// duyet, khong phu thuoc Chrome nao tinh co san tren runner.
+const chrome = await launch({
+  chromePath: chromium.executablePath(),
+  chromeFlags: ['--headless=new', '--no-sandbox'],
+});
 
 /**
  * Chan script cua phan mem diet virus tren may. Kaspersky chen
@@ -91,6 +98,7 @@ for (const id of [
   'render-blocking-insight',
   'render-blocking-resources',
   'image-delivery-insight',
+  'color-contrast',
   'label-content-name-mismatch',
 ]) {
   const a = lhr.audits[id];
@@ -101,4 +109,23 @@ for (const id of [
     const cost = item.wastedMs ? ` +${item.wastedMs}ms` : item.wastedBytes ? ` ${Math.round(item.wastedBytes / 1024)}KiB` : '';
     console.log(`  ${String(url).slice(0, 110)}${cost}`);
   }
+}
+
+if (ASSERT_BUDGETS) {
+  const budgets = {
+    performance: 0.85,
+    accessibility: 0.95,
+    'best-practices': 0.9,
+    seo: 0.95,
+  };
+  const failedBudgets = Object.entries(budgets).filter(
+    ([id, minimum]) => (lhr.categories[id]?.score ?? 0) < minimum,
+  );
+
+  console.log('\n--- quality budgets ---');
+  for (const [id, minimum] of Object.entries(budgets)) {
+    const score = lhr.categories[id]?.score ?? 0;
+    console.log(`  ${id.padEnd(18)} ${Math.round(score * 100)} / ${Math.round(minimum * 100)}`);
+  }
+  if (failedBudgets.length > 0) process.exitCode = 1;
 }

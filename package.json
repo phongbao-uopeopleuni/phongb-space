@@ -5,7 +5,11 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc --noEmit && vite build",
+    "build": "npm run typecheck && npm run build:client && npm run build:ssr && npm run prerender",
+    "build:pages": "node scripts/build-pages.mjs",
+    "build:client": "vite build",
+    "build:ssr": "vite build --ssr src/entry-server.tsx --outDir .prerender --emptyOutDir",
+    "prerender": "node scripts/prerender.mjs",
     "preview": "vite preview",
     "preview:pages": "vite preview --base /phongb-space/",
     "typecheck": "tsc --noEmit",
@@ -14,6 +18,7 @@
     "shots": "node scripts/make-shots.mjs",
     "audit": "node scripts/audit.mjs",
     "smoke": "node scripts/smoke.mjs",
+    "verify:preview": "node scripts/verify-preview.mjs",
     "assets": "npm run icons && npm run og"
   },
   "dependencies": {

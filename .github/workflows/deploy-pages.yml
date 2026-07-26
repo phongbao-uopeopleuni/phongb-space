@@ -3,19 +3,16 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: [main]
+  pull_request:
   # Cho phep chay tay tu tab Actions
   workflow_dispatch:
 
-# Quyen toi thieu du dung: chi doc code, chi ghi duoc Pages.
-# Khong co `contents: write` nen workflow nay khong the sua code trong repo.
-permissions:
-  contents: read
-  pages: write
-  id-token: write
+# Mac dinh khong cap quyen; tung job chi mo dung phan no can.
+permissions: {}
 
 # Neu push lien tiep, huy lan build cu de khong deploy chong cheo
 concurrency:
-  group: pages
+  group: pages-${{ github.ref }}
   cancel-in-progress: true
 
 # ---------------------------------------------------------------------------
@@ -32,7 +29,11 @@ concurrency:
 
 jobs:
   build:
+    name: Verify and build
     runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: read
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
 
@@ -44,25 +45,38 @@ jobs:
       # `npm ci` cai dung phien ban trong package-lock.json, khong tu nang len ban moi
       - run: npm ci
 
+      - name: Audit dependencies
+        run: npm audit --audit-level=high
+
+      - name: Install browser for quality checks
+        run: npx playwright install --with-deps chromium
+
       # GITHUB_PAGES='true' bat `base: '/<ten-repo>/'` trong vite.config.ts.
       # Thieu bien nay thi asset se tro ve goc domain va vo het.
       - name: Build
-        env:
-          GITHUB_PAGES: 'true'
-        run: npm run build
+        run: npm run build:pages
 
-      - uses: actions/configure-pages@983d7736d9b0ae728b81ab479565c72886d7745b # v5
+      - name: Browser smoke test and Lighthouse budgets
+        run: npm run verify:preview
 
       - uses: actions/upload-pages-artifact@56afc609e74202658d3ffba0e8f6dda462b719fa # v3
+        if: github.event_name != 'pull_request'
         with:
           path: dist
 
   deploy:
+    if: github.event_name != 'pull_request'
     needs: build
     runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      pages: write
+      id-token: write
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
+      - uses: actions/configure-pages@983d7736d9b0ae728b81ab479565c72886d7745b # v5
+
       - id: deployment
         uses: actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e # v4

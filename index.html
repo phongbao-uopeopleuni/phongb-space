@@ -80,34 +80,6 @@
       content="phongb-space — thiết kế website cho nhà hàng, homestay và tiệm dịch vụ"
     >
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <!--
-      Nap font KHONG chan hien thi. Truoc day the nay la `rel="stylesheet"` thuong, trinh
-      duyet phai tai xong CSS cua Google Fonts moi ve duoc pixel dau tien — PageSpeed do
-      duoc 2.300ms cho rieng viec cho nay tren mang di dong.
-
-      `preload` tai CSS ma khong chan, roi src/main.tsx doi `rel` sang stylesheet.
-      Truoc day viec doi nam trong thuoc tinh `onload=` ngay tren the nay, nhung do la
-      script inline — de giu no thi Content-Security-Policy buoc phai mo
-      `script-src 'unsafe-inline'`, tuc vo hieu hoa gan het tac dung chong XSS cua CSP.
-      Doi trong main.tsx khong ton them thoi gian nao: toan trang do React render, khong
-      co chu nao xuat hien truoc khi bundle chay.
-
-      The <noscript> lo truong hop trinh duyet tat JavaScript.
-    -->
-    <link
-      id="font-css"
-      rel="preload"
-      as="style"
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
-    >
-    <noscript>
-      <link
-        rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
-      >
-    </noscript>
   </head>
   <body>
     <div id="root"></div>

@@ -1,4 +1,3 @@
-import { BootScreen } from './components/BootScreen';
 import { CustomCursor } from './components/CustomCursor';
 import { Nav } from './components/Nav';
 import { ScrollProgress } from './components/ScrollProgress';
@@ -19,7 +18,6 @@ export function App() {
   return (
     <>
       <StructuredData />
-      <BootScreen />
       <CustomCursor />
       <ScrollProgress />
 

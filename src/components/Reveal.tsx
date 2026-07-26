@@ -1,5 +1,4 @@
 import type { ElementType, ReactNode } from 'react';
-import { useReveal } from '../hooks/useReveal';
 
 type Props = {
   children: ReactNode;
@@ -12,14 +11,13 @@ type Props = {
 };
 
 export function Reveal({ children, variant = 'up', delay = 0, className = '', as }: Props) {
-  const ref = useReveal<HTMLElement>();
   const Tag = (as ?? 'div') as ElementType;
 
   return (
     <Tag
-      ref={ref}
-      className={`${variant === 'left' ? 'reveal-left' : 'reveal'} ${className}`}
-      style={delay ? { transitionDelay: `${delay}ms` } : undefined}
+      className={className}
+      data-reveal={variant}
+      data-reveal-delay={delay || undefined}
     >
       {children}
     </Tag>
