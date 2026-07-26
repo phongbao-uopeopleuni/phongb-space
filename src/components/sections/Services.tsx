@@ -44,7 +44,7 @@ export function Services() {
                 <div className="flex items-start justify-between gap-2">
                   <p className="font-mono text-[0.75rem] text-muted">
                     {String(i + 1).padStart(2, '0')} ·{' '}
-                    <span className="text-accent">[{pkg.key}]</span>
+                    <span className="text-accent">[{pkg.copy.tag}]</span>
                   </p>
                   {pkg.popular && (
                     <span className="shrink-0 rounded border border-accent px-2 py-0.5 font-mono text-[10px] text-accent">

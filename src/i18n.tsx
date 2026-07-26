@@ -74,6 +74,8 @@ const en = {
     cta: 'Ask about this package',
     basic: {
       name: 'Landing page',
+      // Nhan trong ngoac vuong: noi dieu ten goi khong noi, tranh lap lai tieu de
+      tag: '1 page',
       tagline: 'One scrolling page with everything a customer needs to call you.',
       items: [
         'A single page: intro, menu or services, address',
@@ -84,7 +86,8 @@ const en = {
       ],
     },
     standard: {
-      name: 'Full website',
+      name: 'Standard',
+      tag: 'multi-page',
       tagline: 'Separate pages for menu, photos and contact — room to grow.',
       items: [
         'Home, Menu or Services, Gallery, About, Contact',
@@ -96,7 +99,8 @@ const en = {
       ],
     },
     premium: {
-      name: 'Bilingual & advanced',
+      name: 'Advanced',
+      tag: 'bilingual',
       tagline: 'For shops serving both Vietnamese and foreign customers.',
       items: [
         'Everything in the full website package',
@@ -317,6 +321,7 @@ const vi: typeof en = {
     cta: 'Hỏi về gói này',
     basic: {
       name: 'Landing page',
+      tag: '1 trang',
       tagline: 'Một trang cuộn dọc, đủ thông tin để khách gọi ngay.',
       items: [
         'Một trang: giới thiệu, thực đơn hoặc dịch vụ, địa chỉ',
@@ -327,7 +332,8 @@ const vi: typeof en = {
       ],
     },
     standard: {
-      name: 'Website đầy đủ',
+      name: 'Standard',
+      tag: 'nhiều trang',
       tagline: 'Tách riêng trang thực đơn, hình ảnh, liên hệ — có chỗ để mở rộng.',
       items: [
         'Trang chủ, Thực đơn hoặc Dịch vụ, Hình ảnh, Giới thiệu, Liên hệ',
@@ -339,7 +345,8 @@ const vi: typeof en = {
       ],
     },
     premium: {
-      name: 'Song ngữ & nâng cao',
+      name: 'Nâng cao',
+      tag: 'song ngữ',
       tagline: 'Cho quán phục vụ cả khách Việt và khách nước ngoài.',
       items: [
         'Toàn bộ gói website đầy đủ',
