@@ -1,5 +1,8 @@
 # phongb-space
 
+> **Dang co quyet dinh va viec chua lam: xem [TODO.md](TODO.md).**
+> File nay chi ghi quy uoc ky thuat va cach van hanh.
+
 Trang gioi thieu dich vu thiet ke website ca nhan (freelance) cua Bao Phong.
 Muc dich duy nhat: nguoi la vao xem, tin rang toi lam duoc, va bam nut lien he.
 Trang duoc gui truc tiep cho khach qua Zalo va Facebook.
