@@ -32,6 +32,7 @@ export const works: Work[] = [
     slug: 'phong-tuy-bien-quan-cong',
     url: 'https://www.phongtuybienquancong.info/',
     cover: 'images/works/phong-tuy-bien-quan-cong.jpg',
+    coverReady: true,
     stack: ['Web app', 'Cloudflare'],
     featured: true,
     copy: {
@@ -71,6 +72,7 @@ export const works: Work[] = [
     slug: 'ec-pho-noodle-house',
     url: 'https://www.ecphonoodlehousenc.com/home-page',
     cover: 'images/works/ec-pho-noodle-house.jpg',
+    coverReady: true,
     stack: ['React', 'Vite', 'Vercel', 'schema.org'],
     copy: {
       vi: {
@@ -101,6 +103,7 @@ export const works: Work[] = [
     slug: 'fairys-house-hue',
     url: 'https://www.fairyshousehue.com/',
     cover: 'images/works/fairys-house-hue.jpg',
+    coverReady: true,
     stack: ['React', 'Vite', 'Song ngữ', 'SEO local'],
     copy: {
       vi: {
@@ -135,6 +138,7 @@ export const works: Work[] = [
     slug: 'north-carolina-pho',
     url: 'https://ncpho-ten.vercel.app/',
     cover: 'images/works/north-carolina-pho.jpg',
+    coverReady: true,
     stack: ['React', 'Vite', 'Vercel'],
     wip: true,
     copy: {
@@ -166,6 +170,7 @@ export const works: Work[] = [
     slug: 'ec-star-nails-spa',
     url: 'https://www.ecstarnailsandspagreenvillenc.com/',
     cover: 'images/works/ec-star-nails-spa.jpg',
+    coverReady: true,
     // Ghi ro nen tang: khach se chi vao mot san pham cu the va hoi "lam cho toi giong cai nay
     // duoc khong". Neu ho chi vao cai nay ma bao gia nhu site code tay thi lech ky vong ngay tu dau.
     stack: ['Google Sites', 'Nội dung & cấu trúc trang'],
