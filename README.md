@@ -255,11 +255,34 @@ Kiem tra phia client truoc khi goi mang: ten toi thieu 2 ky tu, so dien thoai to
 `noValidate` de thong bao loi ra dung ngon ngu dang xem, thay vi de trinh duyet hien
 bong bong theo ngon ngu he dieu hanh.
 
+### Restrict to Domain DA BAT — khong test form o localhost duoc nua
+
+Muc "Restrict to Domain" trong Settings cua project da luu gia tri
+`phongbao-uopeopleuni.github.io` (kiem tra 26/07/2026: tai lai trang van con gia tri,
+va API cua Formspree tra ve `domain_whitelist` dung chuoi do).
+
+Hau qua can biet truoc: **gui form tu `localhost` gio tra ve HTTP 403.** Do la dung y
+muon, khong phai loi. Khach se thay dong "Form chi nhan gui tu trang chinh thuc" —
+nhanh 403 da duoc xu ly san trong `src/components/sections/Contact.tsx`.
+
+Nen muon thu form that thi phai **deploy roi thu tren ban live**. `npm run smoke` khong
+bi anh huong vi no khong gui form, chi kiem tra markup va bo cuc.
+
+Neu doi sang ten mien rieng ma quen doi muc nay thi form ngung nhan hoan toan, va
+**khong co loi nao trong code** de lan ra — xem muc "Neu doi sang ten mien rieng".
+
 ### Han muc goi free
 
-Goi free co gioi han so luot gui moi thang, va **con so nay Formspree co the doi**. Kiem
-tra lai o trang Account tren formspree.io truoc khi tinh toan gi dua vao no. Het han muc
-thi form tra 403/429 va khach se thay thong bao huong sang Zalo — khong bi im lang.
+50 luot gui moi thang, dem rieng cho tung form, reset dau thang duong lich (xac nhan
+tren trang Account ngay 26/07/2026). Goi free cung chi cho 2 dia chi email nhan.
+
+Formspree co the doi con so nay — kiem tra lai o trang Account truoc khi tinh toan gi
+dua vao no.
+
+Het han muc thi form tra 429 va khach thay thong bao huong sang Zalo — khong bi im lang.
+Day cung la kieu tan cong dang lo nhat voi form: khong can flood, chi can gui du 50 lan
+la tat kenh nhan khach den het thang. Cac lop dang chan: Restrict to Domain (chan script
+goi thang endpoint), honeypot `_gotcha`, va Formshield.
 
 ## Anh xem truoc khi gui link (og:image)
 
