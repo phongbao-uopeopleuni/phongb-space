@@ -73,7 +73,13 @@ export function StructuredData() {
     const tag = document.createElement('script');
     tag.type = 'application/ld+json';
     tag.id = TAG_ID;
-    tag.textContent = JSON.stringify(graph);
+
+    // Escape dau '<' thanh <. Day la cho duy nhat trong ca ung dung ghi chuoi vao
+    // ngu canh <script>: neu mot chuoi nao do chua "</script>" thi trinh duyet dong the
+    // script som va phan con lai bi doc nhu HTML. Hien cac chuoi deu do minh viet trong
+    // i18n nen chua the xay ra, nhung day la loai loi khong duoc phep phu thuoc vao
+    // "hien tai chua ai nhap gi vao day" — noi dung i18n co the den tu cho khac ve sau.
+    tag.textContent = JSON.stringify(graph).replace(/</g, '\\u003c');
     document.head.appendChild(tag);
 
     return () => document.getElementById(TAG_ID)?.remove();

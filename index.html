@@ -1,25 +1,35 @@
 <!doctype html>
 <html lang="vi">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#0b0e14" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0b0e14">
+    <!--
+      Khong ro ri duong dan day du sang site khac. Mac dinh cua trinh duyet gui ca URL
+      day du khi khach bam link ra ngoai; muc nay cat con lai ten mien.
+      Content-Security-Policy duoc chen luc build, xem cspPlugin trong vite.config.ts.
+    -->
+    <meta name="referrer" content="strict-origin-when-cross-origin">
 
     <!--
-      Duong dan tuong doi khong co dau '/' o dau: trinh duyet ghep voi duong dan trang,
-      nen van dung khi deploy o project page '/phongb-space/'. Dat '/favicon.svg' thi
-      icon vo khi deploy. Sinh lai bang `npm run icons`.
+      Cac the void ben duoi co tinh KHONG co dau '/' o cuoi. HTML5 khong can dau do, va
+      W3C Nu Html Checker bao Info cho moi the co no ("trailing slash has no effect").
+      Bo di thi bao cao validator sach hoan toan.
+
+      Duong dan favicon la tuong doi, khong co dau '/' o dau: trinh duyet ghep voi duong
+      dan trang, nen van dung khi deploy o project page '/phongb-space/'. Dat
+      '/favicon.svg' thi icon vo khi deploy. Sinh lai bang `npm run icons`.
     -->
-    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png" />
-    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
 
     <title>phongb-space — Thiết kế website cho nhà hàng, homestay và tiệm dịch vụ</title>
     <meta
       name="description"
       content="Nhận thiết kế website cho nhà hàng, homestay, tiệm nail và spa. Khách tìm thấy quán trên Google, xem thực đơn trên điện thoại, gọi hoặc nhắn Zalo ngay từ website. 5 sản phẩm đã bàn giao tại Việt Nam và Hoa Kỳ."
-    />
-    <link rel="canonical" href="https://phongbao-uopeopleuni.github.io/phongb-space/" />
+    >
+    <link rel="canonical" href="https://phongbao-uopeopleuni.github.io/phongb-space/">
 
     <!--
       og:image PHAI la URL tuyet doi tro tới file PNG. Crawler cua Facebook, Zalo va
@@ -27,70 +37,76 @@
       TODO: neu doi sang ten mien rieng thi sua ca 4 URL tuyet doi ben duoi
       (canonical, og:url, og:image, twitter:image) va `base` trong vite.config.ts.
     -->
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://phongbao-uopeopleuni.github.io/phongb-space/" />
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://phongbao-uopeopleuni.github.io/phongb-space/">
     <meta
       property="og:title"
       content="phongb-space — Thiết kế website cho nhà hàng, homestay và tiệm dịch vụ"
-    />
+    >
     <meta
       property="og:description"
       content="Website mang khách tới: tìm thấy trên Google, xem tốt trên điện thoại, một cái bấm là gọi hoặc nhắn Zalo. 5 sản phẩm thật đang chạy."
-    />
+    >
     <meta
       property="og:image"
       content="https://phongbao-uopeopleuni.github.io/phongb-space/og-image.png"
-    />
-    <meta property="og:image:type" content="image/png" />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
+    >
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
     <meta
       property="og:image:alt"
       content="phongb-space — thiết kế website cho nhà hàng, homestay và tiệm dịch vụ"
-    />
-    <meta property="og:locale" content="vi_VN" />
-    <meta property="og:locale:alternate" content="en_US" />
-    <meta property="og:site_name" content="phongb-space" />
+    >
+    <meta property="og:locale" content="vi_VN">
+    <meta property="og:locale:alternate" content="en_US">
+    <meta property="og:site_name" content="phongb-space">
 
-    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:card" content="summary_large_image">
     <meta
       name="twitter:title"
       content="phongb-space — Thiết kế website cho nhà hàng, homestay và tiệm dịch vụ"
-    />
+    >
     <meta
       name="twitter:description"
       content="Website mang khách tới: tìm thấy trên Google, xem tốt trên điện thoại, một cái bấm là gọi hoặc nhắn Zalo. 5 sản phẩm thật đang chạy."
-    />
+    >
     <meta
       name="twitter:image"
       content="https://phongbao-uopeopleuni.github.io/phongb-space/og-image.png"
-    />
+    >
     <meta
       name="twitter:image:alt"
       content="phongb-space — thiết kế website cho nhà hàng, homestay và tiệm dịch vụ"
-    />
+    >
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <!--
       Nap font KHONG chan hien thi. Truoc day the nay la `rel="stylesheet"` thuong, trinh
       duyet phai tai xong CSS cua Google Fonts moi ve duoc pixel dau tien — PageSpeed do
       duoc 2.300ms cho rieng viec cho nay tren mang di dong.
-      Meo `preload` + doi sang stylesheet luc onload: trang ve ngay bang font he thong,
-      font that thay vao khi tai xong (`display=swap` lo phan chuyen muot).
+
+      `preload` tai CSS ma khong chan, roi src/main.tsx doi `rel` sang stylesheet.
+      Truoc day viec doi nam trong thuoc tinh `onload=` ngay tren the nay, nhung do la
+      script inline — de giu no thi Content-Security-Policy buoc phai mo
+      `script-src 'unsafe-inline'`, tuc vo hieu hoa gan het tac dung chong XSS cua CSP.
+      Doi trong main.tsx khong ton them thoi gian nao: toan trang do React render, khong
+      co chu nao xuat hien truoc khi bundle chay.
+
       The <noscript> lo truong hop trinh duyet tat JavaScript.
     -->
     <link
+      id="font-css"
       rel="preload"
       as="style"
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
-      onload="this.onload=null;this.rel='stylesheet'"
-    />
+    >
     <noscript>
       <link
         rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
-      />
+      >
     </noscript>
   </head>
   <body>

@@ -6,6 +6,8 @@ on:
   # Cho phep chay tay tu tab Actions
   workflow_dispatch:
 
+# Quyen toi thieu du dung: chi doc code, chi ghi duoc Pages.
+# Khong co `contents: write` nen workflow nay khong the sua code trong repo.
 permissions:
   contents: read
   pages: write
@@ -16,17 +18,30 @@ concurrency:
   group: pages
   cancel-in-progress: true
 
+# ---------------------------------------------------------------------------
+# Cac action duoc GHIM VAO COMMIT SHA thay vi thẻ dang @v4.
+#
+# Ly do: thẻ trong Git la con tro DI DONG. Neu tai khoan cua mot action bi chiem,
+# ke tan cong tro thẻ @v4 sang commit doc va moi lan build cua minh se chay code do —
+# tuc chen duoc bat ky thu gi vao website. Ghim SHA thi noi dung khong the doi.
+#
+# Doi lai: phai tu cap nhat SHA khi muon nang phien ban. Lay SHA moi bang:
+#   gh api repos/actions/checkout/git/ref/tags/v4 --jq .object.sha
+# Comment sau moi dong ghi ro SHA nay tuong ung thẻ nao.
+# ---------------------------------------------------------------------------
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
         with:
           node-version: '20'
           cache: npm
 
+      # `npm ci` cai dung phien ban trong package-lock.json, khong tu nang len ban moi
       - run: npm ci
 
       # GITHUB_PAGES='true' bat `base: '/<ten-repo>/'` trong vite.config.ts.
@@ -36,9 +51,9 @@ jobs:
           GITHUB_PAGES: 'true'
         run: npm run build
 
-      - uses: actions/configure-pages@v5
+      - uses: actions/configure-pages@983d7736d9b0ae728b81ab479565c72886d7745b # v5
 
-      - uses: actions/upload-pages-artifact@v3
+      - uses: actions/upload-pages-artifact@56afc609e74202658d3ffba0e8f6dda462b719fa # v3
         with:
           path: dist
 
@@ -50,4 +65,4 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e # v4
