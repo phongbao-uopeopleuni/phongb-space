@@ -95,8 +95,21 @@ export const YEARLY_MAINTENANCE: number | null = 2_000_000;
 
 /**
  * Endpoint Formspree cho form lien he.
- * TODO: tao form tai https://formspree.io roi dan ID vao day (dang 'https://formspree.io/f/xxxxxxx').
- * Khi con rong, form se o trang thai vo hieu va chi hien nut Zalo — khong render nut gui
- * de tranh bam vao ma khong gui duoc di dau.
+ *
+ * Day KHONG phai bi mat: moi trang dung Formspree deu de chuoi nay trong HTML cong khai.
+ * Cai bao ve endpoint la muc "Restrict to Domain" trong Settings cua project Formspree,
+ * khong phai viec giau chuoi.
+ *
+ * Form: "Lien he phongb-space", trong project "My First Project".
+ * Email nhan thong bao: baophongcmu@gmail.com. Formshield (loc spam ngam) dang bat,
+ * CAPTCHA tat — khach la chu quan an, khong bat giai captcha.
+ *
+ * Khi chuoi nay rong, form se o trang thai vo hieu va khong render nut gui.
  */
-export const FORMSPREE_ENDPOINT = '' as string;
+export const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mdaqynja' as string;
+
+/**
+ * Tieu de email Formspree gui ve hop thu, dat qua truong an `_subject`.
+ * Giup loc thu trong Gmail va nhan ra ngay lead den tu website nao.
+ */
+export const FORM_SUBJECT = 'Lien he moi tu phongb-space';

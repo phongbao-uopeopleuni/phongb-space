@@ -89,6 +89,9 @@ for (const w of [375, 414, 768, 1280, 1440]) {
     const vw = document.documentElement.clientWidth;
     return [...document.querySelectorAll('body *')]
       .filter((el) => {
+        // Bo qua nhanh aria-hidden: do la phan tu trang tri hoac bay chong bot (honeypot,
+        // con tro tuy bien) — co tinh dat ngoai luong hien thi, khong phai loi bo cuc
+        if (el.closest('[aria-hidden="true"]')) return false;
         const r = el.getBoundingClientRect();
         return r.width > 0 && (r.right > vw + 0.5 || r.left < -0.5);
       })

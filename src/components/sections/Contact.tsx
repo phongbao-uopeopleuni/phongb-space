@@ -1,42 +1,128 @@
 import { useState } from 'react';
 import { Mail, MessageCircle, Phone, Send } from 'lucide-react';
 import { useI18n } from '../../i18n';
-import { CONTACT, FORMSPREE_ENDPOINT } from '../../data/config';
+import { CONTACT, FORMSPREE_ENDPOINT, FORM_SUBJECT } from '../../data/config';
 import { Reveal } from '../Reveal';
 import { SectionHead } from '../SectionHead';
 
 type Status = 'idle' | 'sending' | 'sent' | 'error';
+/** Phan biet tung loai loi de bao dung nguyen nhan, khong bao chung mot cau */
+type ErrorKind = 'network' | 'domain' | 'quota' | 'server';
+type FieldName = 'name' | 'phone' | 'email';
+type FieldErrors = Partial<Record<FieldName, string>>;
 
 const FIELD_CLASS =
   'w-full rounded-md border border-line bg-bg px-3 py-2 text-[0.9rem] text-fg placeholder:text-muted/70 transition-colors focus:border-accent focus:outline-none disabled:opacity-60';
 
 export function Contact() {
-  const { t } = useI18n();
+  const { t, lang } = useI18n();
   const [status, setStatus] = useState<Status>('idle');
+  const [errorKind, setErrorKind] = useState<ErrorKind>('server');
+  const [fieldErrors, setFieldErrors] = useState<FieldErrors>({});
 
-  // TODO: form chi hoat dong sau khi dien FORMSPREE_ENDPOINT trong src/data/config.ts.
   // Khi chua co endpoint, cac o nhap bi vo hieu va khong render nut Gui — de tranh
   // mot cai nut bam vao khong di dau ca.
   const formEnabled = FORMSPREE_ENDPOINT.length > 0;
 
+  /** Kiem tra phia client truoc khi goi mang, de khach thay loi ngay */
+  function validate(data: FormData): FieldErrors {
+    const errors: FieldErrors = {};
+
+    const name = String(data.get('name') ?? '').trim();
+    if (name.length < 2) errors.name = t.contact.errName;
+
+    // Chi dem chu so: khach hay nhap kem dau cach, dau cham hoac +84
+    const digits = String(data.get('phone') ?? '').replace(/\D/g, '');
+    if (digits.length < 8) errors.phone = t.contact.errPhone;
+
+    const email = String(data.get('email') ?? '').trim();
+    if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) {
+      errors.email = t.contact.errEmail;
+    }
+
+    return errors;
+  }
+
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    if (!formEnabled) return;
+    if (!formEnabled || status === 'sending') return;
 
     const form = e.currentTarget;
+    const data = new FormData(form);
+
+    // Honeypot: nguoi that khong thay o nay nen khong bao gio dien. Bot dien vao thi
+    // bao thanh cong nhung khong gui gi ca — noi that voi bot chi giup no thu lai.
+    if (String(data.get('_gotcha') ?? '').length > 0) {
+      form.reset();
+      setFieldErrors({});
+      setStatus('sent');
+      return;
+    }
+
+    const errors = validate(data);
+    if (Object.keys(errors).length > 0) {
+      setFieldErrors(errors);
+      setStatus('idle');
+      // Dua con tro vao o sai dau tien de khach khong phai tu do tim
+      const first = (['name', 'phone', 'email'] as FieldName[]).find((f) => errors[f]);
+      if (first) form.querySelector<HTMLInputElement>(`[name="${first}"]`)?.focus();
+      return;
+    }
+
+    setFieldErrors({});
     setStatus('sending');
+
     try {
       const res = await fetch(FORMSPREE_ENDPOINT, {
         method: 'POST',
         headers: { Accept: 'application/json' },
-        body: new FormData(form),
+        body: data,
       });
-      if (!res.ok) throw new Error(String(res.status));
-      form.reset();
-      setStatus('sent');
+
+      if (res.ok) {
+        form.reset();
+        setStatus('sent');
+        return;
+      }
+
+      // 403: Restrict to Domain chan, hoac form bi vo hieu hoa
+      // 429: het han muc luot gui cua goi free trong thang
+      if (res.status === 403) setErrorKind('domain');
+      else if (res.status === 429) setErrorKind('quota');
+      else setErrorKind('server');
+      setStatus('error');
     } catch {
+      // fetch nem loi => khong ra duoc mang, khac han voi loi tu phia Formspree
+      setErrorKind('network');
       setStatus('error');
     }
+  }
+
+  const errorMessage: Record<ErrorKind, string> = {
+    network: t.contact.errNetwork,
+    domain: t.contact.errDomain,
+    quota: t.contact.errQuota,
+    server: t.contact.error,
+  };
+
+  /** Nhan o nhap kem thong bao loi ngay duoi, gan bang aria-describedby */
+  function fieldMeta(field: FieldName) {
+    const err = fieldErrors[field];
+    return {
+      'aria-invalid': err ? (true as const) : undefined,
+      'aria-describedby': err ? `cf-${field}-err` : undefined,
+      className: `mt-1.5 ${FIELD_CLASS} ${err ? 'border-red-400' : ''}`,
+    };
+  }
+
+  function FieldError({ field }: { field: FieldName }) {
+    const err = fieldErrors[field];
+    if (!err) return null;
+    return (
+      <p id={`cf-${field}-err`} className="mt-1 text-[0.75rem] text-red-400">
+        {err}
+      </p>
+    );
   }
 
   return (
@@ -103,7 +189,44 @@ export function Contact() {
                 </p>
               )}
 
-              <form onSubmit={handleSubmit} className="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-2">
+              <form
+                // action/method chi de markup tu giai thich va lam duong du phong: viec gui
+                // that di qua fetch trong handleSubmit, da preventDefault ngay dong dau
+                action={FORMSPREE_ENDPOINT}
+                method="POST"
+                onSubmit={handleSubmit}
+                // noValidate: tu kiem tra bang JavaScript de thong bao loi ra tieng Viet,
+                // thay vi de trinh duyet hien bong bong theo ngon ngu he dieu hanh
+                noValidate
+                className="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-2"
+              >
+                {/* Truong an gui kem, khach khong thay */}
+                <input type="hidden" name="_subject" value={FORM_SUBJECT} />
+                {/* Ngon ngu khach dang xem — de biet nen tra loi bang tieng Viet hay tieng Anh */}
+                <input type="hidden" name="language" value={lang} />
+
+                {/* Honeypot.
+                    Khong dung `display:none` vi mot so bot bo qua o bi an hoan toan.
+                    Cung khong dung `left:-9999px`: toa do am nam ngoai khung nhin va se
+                    bi bai kiem tra tran ngang trong scripts/smoke.mjs bao loi.
+                    Thay vao do thu nho ve 1px roi cat sach bang clip-path — vo hinh
+                    nhung van nam trong khung. tabIndex -1 va aria-hidden de nguoi dung
+                    ban phim va trinh doc man hinh khong bao gio cham vao. */}
+                <div
+                  aria-hidden="true"
+                  className="absolute size-px overflow-hidden"
+                  style={{ clipPath: 'inset(50%)' }}
+                >
+                  <label htmlFor="cf-gotcha">Do not fill this in</label>
+                  <input
+                    id="cf-gotcha"
+                    type="text"
+                    name="_gotcha"
+                    tabIndex={-1}
+                    autoComplete="off"
+                  />
+                </div>
+
                 <div>
                   <label htmlFor="cf-name" className="block font-mono text-[0.75rem] text-muted">
                     {t.contact.fieldName}{' '}
@@ -113,11 +236,11 @@ export function Contact() {
                     id="cf-name"
                     name="name"
                     type="text"
-                    required
                     autoComplete="name"
                     disabled={!formEnabled}
-                    className={`mt-1.5 ${FIELD_CLASS}`}
+                    {...fieldMeta('name')}
                   />
+                  <FieldError field="name" />
                 </div>
 
                 <div>
@@ -129,11 +252,29 @@ export function Contact() {
                     id="cf-phone"
                     name="phone"
                     type="tel"
-                    required
+                    inputMode="tel"
                     autoComplete="tel"
                     disabled={!formEnabled}
-                    className={`mt-1.5 ${FIELD_CLASS}`}
+                    {...fieldMeta('phone')}
                   />
+                  <FieldError field="phone" />
+                </div>
+
+                <div className="sm:col-span-2">
+                  <label htmlFor="cf-email" className="block font-mono text-[0.75rem] text-muted">
+                    {t.contact.fieldEmail}{' '}
+                    <span className="text-muted/70">({t.contact.optional})</span>
+                  </label>
+                  <input
+                    id="cf-email"
+                    name="email"
+                    type="email"
+                    inputMode="email"
+                    autoComplete="email"
+                    disabled={!formEnabled}
+                    {...fieldMeta('email')}
+                  />
+                  <FieldError field="email" />
                 </div>
 
                 <div className="sm:col-span-2">
@@ -154,12 +295,15 @@ export function Contact() {
                 </div>
 
                 <div className="sm:col-span-2">
-                  <label htmlFor="cf-note" className="block font-mono text-[0.75rem] text-muted">
+                  <label
+                    htmlFor="cf-message"
+                    className="block font-mono text-[0.75rem] text-muted"
+                  >
                     {t.contact.fieldNote}
                   </label>
                   <textarea
-                    id="cf-note"
-                    name="note"
+                    id="cf-message"
+                    name="message"
                     rows={4}
                     placeholder={t.contact.fieldNotePlaceholder}
                     disabled={!formEnabled}
@@ -174,16 +318,25 @@ export function Contact() {
                       disabled={status === 'sending'}
                       className="btn btn-primary w-full disabled:opacity-70 sm:w-auto"
                     >
-                      <Send size={15} aria-hidden="true" />
+                      {status === 'sending' ? (
+                        <span
+                          aria-hidden="true"
+                          className="spin inline-block size-4 rounded-full border-2 border-on-accent/30 border-t-on-accent"
+                        />
+                      ) : (
+                        <Send size={15} aria-hidden="true" />
+                      )}
                       {status === 'sending' ? t.contact.sending : t.contact.submit}
                     </button>
                   </div>
                 )}
 
                 {/* aria-live de trinh doc man hinh thong bao ket qua gui */}
-                <p aria-live="polite" className="sm:col-span-2 text-[0.85rem]">
+                <p aria-live="polite" className="text-[0.85rem] leading-relaxed sm:col-span-2">
                   {status === 'sent' && <span className="text-accent">{t.contact.sent}</span>}
-                  {status === 'error' && <span className="text-fg">{t.contact.error}</span>}
+                  {status === 'error' && (
+                    <span className="text-red-400">{errorMessage[errorKind]}</span>
+                  )}
                 </p>
               </form>
             </div>

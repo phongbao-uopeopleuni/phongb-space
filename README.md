@@ -198,12 +198,68 @@ Vi day la project page (URL dang `https://<user>.github.io/<ten-repo>/`):
 
 ### Neu doi sang ten mien rieng
 
-Phai sua **ca hai** cho, khong thi anh xem truoc tren Zalo/Facebook se hong:
+Phai sua **ba** cho, thieu mot cai la co thu hong:
 
 1. `index.html` — cac URL tuyet doi: `canonical`, `og:url`, `og:image`, `twitter:image`
 2. `vite.config.ts` — dat `base` ve `'/'` (ten mien rieng thi khong con duong dan con)
+3. **Formspree → project "My First Project" → Settings → Restrict to Domain** — doi sang
+   ten mien moi. Khong doi thi form ngung nhan, tra ve 403 va khach thay thong bao
+   "Form chi nhan gui tu trang chinh thuc".
 
 Nho sua ca `SITE_URL` trong `src/data/config.ts` cho khop.
+
+## Form lien he
+
+Backend la **Formspree goi FREE**, khong co server nao cua minh.
+
+| | |
+|---|---|
+| Endpoint | `https://formspree.io/f/mdaqynja` (trong `src/data/config.ts`) |
+| Ten form | Lien he phongb-space |
+| Project | My First Project |
+| Email nhan | baophongcmu@gmail.com |
+| Loc spam | Formshield (chay ngam). CAPTCHA **tat** — khach la chu quan an, khong bat giai captcha |
+
+Endpoint **khong phai bi mat**: moi trang dung Formspree deu de chuoi nay trong HTML cong
+khai. Cai bao ve endpoint la muc Restrict to Domain, khong phai viec giau chuoi.
+
+### Cach form hoat dong
+
+Goi `fetch` POST kem header `Accept: application/json`, body la `FormData`. Khong dung
+tinh nang `_next` (redirect sau khi gui) vi do la tinh nang tra phi — moi thong bao
+thanh cong/that bai deu xu ly bang JavaScript sau khi co phan hoi.
+
+Truong an gui kem:
+
+- `_subject` — tieu de email, lay tu `FORM_SUBJECT` trong config, de loc thu trong Gmail
+- `language` — ngon ngu khach dang xem (`vi`/`en`), de biet nen tra loi bang tieng nao
+- `_gotcha` — **honeypot**. O nhap dat ngoai khung nhin (`left: -9999px`, khong dung
+  `display:none` vi mot so bot bo qua o bi an hoan toan), `tabIndex={-1}` va boc trong
+  `aria-hidden` nen nguoi dung ban phim va trinh doc man hinh khong bao gio cham vao.
+  Neu o nay co gia tri thi **bao thanh cong nhung khong gui gi ca** — noi that voi bot
+  chi giup no thu lai.
+
+### Thong bao loi theo tung nguyen nhan
+
+Bao chung mot cau "gui that bai" thi khach khong biet nen lam gi tiep. Cac truong hop:
+
+| Tinh huong | Thong bao |
+|---|---|
+| HTTP 403 | Bi Restrict to Domain chan, hoac form bi vo hieu hoa |
+| HTTP 429 | Het han muc luot gui trong thang |
+| HTTP khac | Loi chung, huong khach sang Zalo |
+| `fetch` nem loi | Khong ra duoc mang — khac han loi tu phia Formspree |
+
+Kiem tra phia client truoc khi goi mang: ten toi thieu 2 ky tu, so dien thoai toi thieu
+8 chu so (bo qua dau cach, dau cham, `+84`), email chi kiem neu co nhap. Form dat
+`noValidate` de thong bao loi ra dung ngon ngu dang xem, thay vi de trinh duyet hien
+bong bong theo ngon ngu he dieu hanh.
+
+### Han muc goi free
+
+Goi free co gioi han so luot gui moi thang, va **con so nay Formspree co the doi**. Kiem
+tra lai o trang Account tren formspree.io truoc khi tinh toan gi dua vao no. Het han muc
+thi form tra 403/429 va khach se thay thong bao huong sang Zalo — khong bi im lang.
 
 ## Anh xem truoc khi gui link (og:image)
 
