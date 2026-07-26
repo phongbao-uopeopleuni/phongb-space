@@ -72,10 +72,26 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!--
+      Nap font KHONG chan hien thi. Truoc day the nay la `rel="stylesheet"` thuong, trinh
+      duyet phai tai xong CSS cua Google Fonts moi ve duoc pixel dau tien — PageSpeed do
+      duoc 2.300ms cho rieng viec cho nay tren mang di dong.
+      Meo `preload` + doi sang stylesheet luc onload: trang ve ngay bang font he thong,
+      font that thay vao khi tai xong (`display=swap` lo phan chuyen muot).
+      The <noscript> lo truong hop trinh duyet tat JavaScript.
+    -->
     <link
+      rel="preload"
+      as="style"
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
+      onload="this.onload=null;this.rel='stylesheet'"
     />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
+      />
+    </noscript>
   </head>
   <body>
     <div id="root"></div>

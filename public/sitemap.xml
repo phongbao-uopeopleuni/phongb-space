@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Trang mot mach nen chi co mot URL. Giu file nay de nop truc tiep trong Google Search
+  Console: https://phongbao-uopeopleuni.github.io/phongb-space/sitemap.xml
+
+  Luu y: robots.txt KHONG dat duoc o day. Crawler chi doc robots.txt o goc ten mien
+  (https://phongbao-uopeopleuni.github.io/robots.txt), ma goc do thuoc repo user page
+  chu khong thuoc repo nay. File dat trong public/ se ra /phongb-space/robots.txt va
+  bi bo qua. Vi vay phai nop sitemap bang tay trong Search Console.
+
+  TODO: cap nhat lastmod khi doi noi dung dang ke.
+-->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://phongbao-uopeopleuni.github.io/phongb-space/</loc>
+    <lastmod>2026-07-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+</urlset>
