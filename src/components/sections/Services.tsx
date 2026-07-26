@@ -23,7 +23,9 @@ export function Services() {
           lede={t.services.lede}
         />
 
-        <div className="mt-10 grid grid-cols-1 items-stretch gap-5 md:grid-cols-3">
+        {/* 3 cot chi tu lg: o 768px moi the chi con ~218px, qua chat cho danh sach
+            hang muc voi co chu goc 18px */}
+        <div className="mt-10 grid grid-cols-1 items-stretch gap-5 lg:grid-cols-3">
           {packages.map((pkg, i) => (
             <Reveal key={pkg.key} as="article" delay={i * 90} className="h-full">
               <div

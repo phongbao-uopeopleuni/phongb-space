@@ -1,5 +1,5 @@
 {
-  "name": "bao-phong-web",
+  "name": "phongb-space",
   "private": true,
   "version": "1.0.0",
   "type": "module",
@@ -8,7 +8,9 @@
     "build": "tsc --noEmit && vite build",
     "preview": "vite preview",
     "typecheck": "tsc --noEmit",
-    "og": "node scripts/make-og-image.mjs"
+    "og": "node scripts/make-og-image.mjs",
+    "icons": "node scripts/make-icons.mjs",
+    "assets": "npm run icons && npm run og"
   },
   "dependencies": {
     "lucide-react": "^0.470.0",

@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { LogoMark } from './Logo';
 
 const SESSION_KEY = 'bp-booted';
 const DURATION = 1500;
@@ -69,8 +70,9 @@ export function BootScreen() {
     >
       <div className="w-full max-w-sm font-mono text-sm">
         <div className="flex items-center gap-3 text-fg">
+          <LogoMark size={20} />
           <span className="spin inline-block size-4 rounded-full border-2 border-line border-t-accent" />
-          <span>bao-phong</span>
+          <span>phongb-space</span>
         </div>
 
         <div className="mt-4 min-h-[4.5rem] space-y-1 text-muted">

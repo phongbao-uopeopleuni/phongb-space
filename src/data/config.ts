@@ -22,7 +22,7 @@ export const CONTACT = {
  * Khi doi sang ten mien rieng: sua o day, doi `base` trong vite.config.ts ve '/',
  * va sua og:url / og:image / twitter:image trong index.html.
  */
-export const SITE_URL = 'https://phongbao-uopeopleuni.github.io/bao-phong-web/';
+export const SITE_URL = 'https://phongbao-uopeopleuni.github.io/phongb-space/';
 
 /* ---------- So lieu hero ---------- */
 export const STATS = {

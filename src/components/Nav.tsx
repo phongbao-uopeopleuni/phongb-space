@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import { useI18n } from '../i18n';
+import { Logo } from './Logo';
 
 // Thu tu nay phai khop voi thu tu section trong App.tsx de scroll-spy chay dung
 const SECTIONS = ['works', 'services', 'process', 'deliverables', 'faq'] as const;
@@ -58,9 +59,10 @@ export function Nav() {
       <nav aria-label={t.nav.mainNav} className="shell flex h-20 items-center justify-between gap-4">
         <a
           href="#top"
-          className="font-mono text-sm font-semibold text-fg transition-colors hover:text-accent"
+          aria-label="phongb-space"
+          className="shrink-0 text-fg transition-colors hover:text-accent"
         >
-          bao-phong<span className="caret">▍</span>
+          <Logo />
         </a>
 
         {/* Dieu huong desktop */}
@@ -92,11 +94,13 @@ export function Nav() {
             <span className={lang === 'en' ? 'text-accent' : ''}>en</span>
           </button>
 
-          {/* Khong dung .btn o day: nut nav can nho hon, viet class truc tiep
-              de tranh phu thuoc vao thu tu utility cua Tailwind */}
+          {/* Hien o MOI do rong, ke ca dien thoai: muc tieu duy nhat cua trang la
+              mot cu bam lien he, khong the de nut do chi nam trong menu hamburger.
+              Khong dung .btn o day: nut nav can nho hon, viet class truc tiep de
+              tranh phu thuoc vao thu tu utility cua Tailwind. */}
           <a
             href="#contact"
-            className="hidden items-center rounded-lg border border-accent bg-accent px-3 py-2 text-[0.8rem] font-semibold text-on-accent transition-colors hover:bg-[#6ee79b] sm:inline-flex"
+            className="inline-flex shrink-0 items-center whitespace-nowrap rounded-lg border border-accent bg-accent px-3 py-2 text-[0.8rem] font-semibold text-on-accent transition-colors hover:bg-[#6ee79b]"
           >
             {t.nav.contact}
           </a>

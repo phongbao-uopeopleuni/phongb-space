@@ -1,4 +1,4 @@
-# bao-phong-web
+# phongb-space
 
 Trang gioi thieu dich vu thiet ke website ca nhan (freelance) cua Bao Phong.
 Muc dich duy nhat: nguoi la vao xem, tin rang toi lam duoc, va bam nut lien he.
@@ -31,13 +31,40 @@ npm run build
 ```
 
 ```bash
-npm run og
+npm run assets
 ```
 
 - `dev` — chay may chu phat trien tai http://localhost:5173
 - `build` — `tsc --noEmit` roi `vite build`, ket qua trong `dist/`
 - `typecheck` — chi kiem tra kieu
 - `og` — sinh lai `public/og-image.png` (1200x630) bang sharp
+- `icons` — sinh lai favicon va apple-touch-icon
+- `assets` — chay ca `icons` va `og`
+
+## Logo
+
+Hinh khoi: con chip vuong bo goc, goc tren phai vat cheo nhu chan mach in, ben trong la
+dau nhac lenh `>_`. Wordmark la `phongb-space` kem con tro nhap nhay.
+
+Toa do duong dan SVG nam o **hai cho phai giu khop nhau**:
+
+| File | Dung cho |
+|---|---|
+| [src/components/Logo.tsx](src/components/Logo.tsx) | Logo tren trang (thanh dieu huong, man hinh boot) |
+| [scripts/logo-shape.mjs](scripts/logo-shape.mjs) | Favicon, apple-touch-icon, logo trong anh og |
+
+Sua toa do o mot ben thi phai sua ca ben kia, khong thi logo tren trang va logo tren tab
+trinh duyet se lech nhau. Sua xong chay `npm run assets` de sinh lai file anh.
+
+Hai bien the mau, co tinh khac nhau:
+
+- **Trong trang**: nen `#10141c`, vien `#1e2430`, glyph `#4ade80` — hoa vao giao dien toi.
+- **Favicon / apple-touch-icon**: nen `#4ade80` dac, glyph `#06130b`. O co 16px tren tab
+  trinh duyet, bien the nen toi gan nhu bien mat; bien the nen xanh thi noi bat tren ca
+  theme sang va theme toi.
+
+Duong dan favicon trong `index.html` la **tuong doi, khong co dau `/` o dau**. Dat
+`/favicon.svg` thi icon vo khi deploy o project page `/phongb-space/`.
 
 ## Cau truc
 
@@ -51,7 +78,7 @@ src/
 ├─ lib/asset.ts          asset() — bat buoc dung cho moi file trong public/
 ├─ hooks/useReveal.ts    IntersectionObserver, ngat ket noi sau lan dau
 └─ components/
-   ├─ BootScreen  CustomCursor  ScrollProgress  Nav  Reveal  SectionHead  Typewriter
+   ├─ Logo  BootScreen  CustomCursor  ScrollProgress  Nav  Reveal  SectionHead  Typewriter
    └─ sections/   Hero · Works · Services · Process · Deliverables · Faq · Contact · Footer
 ```
 

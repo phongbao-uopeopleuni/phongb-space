@@ -11,6 +11,7 @@ import { mkdir, writeFile } from 'node:fs/promises';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import sharp from 'sharp';
+import { CHEVRON, COLORS, CURSOR, OUTLINE } from './logo-shape.mjs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const OUT = resolve(__dirname, '../public/og-image.png');
@@ -19,14 +20,7 @@ const WIDTH = 1200;
 const HEIGHT = 630;
 
 // Dung dung bang mau cua design system
-const C = {
-  bg: '#0b0e14',
-  surface: '#10141c',
-  line: '#1e2430',
-  fg: '#e6eaf2',
-  muted: '#94a0b3',
-  accent: '#4ade80',
-};
+const C = COLORS;
 
 /**
  * Chi dinh ten font cu the, KHONG dung alias 'sans-serif' / 'monospace': librsvg tra
@@ -70,7 +64,13 @@ const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${WIDTH}" height="${
   <circle cx="100" cy="84" r="6" fill="${C.line}"/>
   <circle cx="122" cy="84" r="6" fill="${C.line}"/>
   <circle cx="144" cy="84" r="6" fill="${C.accent}"/>
-  <text x="180" y="90" font-family="${MONO}" font-size="18" fill="${C.muted}">bao-phong</text>
+  <!-- Logo mark, lay tu logo-shape.mjs nen luon khop voi logo tren trang -->
+  <g transform="translate(174 62) scale(1.4)">
+    <path d="${OUTLINE}" fill="${C.surface}" stroke="${C.line}" stroke-width="1.5"/>
+    <path d="${CHEVRON}" fill="none" stroke="${C.accent}" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="${CURSOR.x}" y="${CURSOR.y}" width="${CURSOR.w}" height="${CURSOR.h}" rx="${CURSOR.r}" fill="${C.accent}"/>
+  </g>
+  <text x="236" y="91" font-family="${MONO}" font-size="18" fill="${C.muted}">phongb-space</text>
 
   <!-- Nhan phu de dang comment code -->
   <text x="112" y="176" font-family="${MONO}" font-size="22" fill="${C.accent}">// thiet-ke-website</text>
@@ -84,10 +84,10 @@ const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${WIDTH}" height="${
   <!--
     Dong so lieu dung sans-serif, KHONG dung monospace: font mono mac dinh cua may
     render thuong thieu glyph dau tieng Viet nen bi thay the tung ky tu, trong rat chap va.
-    Monospace chi danh cho phan ASCII (// comment, $ lenh, bao-phong).
+    Monospace chi danh cho phan ASCII (// comment, $ lenh, phongb-space).
     Viet lien mot dong: SVG khong gop khoang trang/xuong dong nhu HTML.
   -->
-  <text x="112" y="470" font-family="${SANS}" font-size="24" fill="${C.muted}"><tspan fill="${C.accent}" font-weight="600">5</tspan> website đã bàn giao<tspan fill="${C.muted}" opacity="0.5">&#160;·&#160;</tspan><tspan fill="${C.accent}" font-weight="600">2</tspan> quốc gia<tspan fill="${C.muted}" opacity="0.5">&#160;·&#160;</tspan>Việt Nam &amp; Hoa Kỳ</text>
+  <text xml:space="preserve" x="112" y="470" font-family="${SANS}" font-size="24" fill="${C.muted}"><tspan fill="${C.accent}" font-weight="600">5</tspan> website đã bàn giao<tspan fill="${C.muted}" opacity="0.5">&#160;·&#160;</tspan><tspan fill="${C.accent}" font-weight="600">2</tspan> quốc gia<tspan fill="${C.muted}" opacity="0.5">&#160;·&#160;</tspan>Việt Nam &amp; Hoa Kỳ</text>
 
   <!-- Dong lien he + con tro terminal (ve tinh) -->
   <text x="112" y="524" font-family="${MONO}" font-size="22" fill="${C.fg}"><tspan fill="${C.accent}">$</tspan> zalo 077 575 3003</text>
