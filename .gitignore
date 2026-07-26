@@ -3,6 +3,7 @@ dist
 *.local
 .DS_Store
 .vite
+.prerender
 
 # Cai dat cuc bo cua Claude Code, khong chia se qua repo
 .claude/settings.local.json

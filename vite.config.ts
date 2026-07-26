@@ -16,16 +16,16 @@ import tailwindcss from '@tailwindcss/vite';
  * co chen duoc chuoi vao DOM cung khong chay duoc script. Doi lai phai bo thuoc tinh
  * onload inline tren the font trong index.html (xem src/main.tsx).
  *
- * `style-src` van phai co 'unsafe-inline': React dat style qua CSSOM va Tailwind sinh
- * style noi tuyen. Chen duoc CSS thi muc thiet hai thap hon han chen duoc script.
+ * `style-src` van phai co 'unsafe-inline' vi mot so hieu ung dat transitionDelay va
+ * mask-image qua style attribute. Font dung font he thong, khong goi ben thu ba.
  */
 const CSP = [
   "default-src 'self'",
   "base-uri 'self'",
   "object-src 'none'",
   "script-src 'self'",
-  "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
-  "font-src 'self' https://fonts.gstatic.com",
+  "style-src 'self' 'unsafe-inline'",
+  "font-src 'self'",
   "img-src 'self' data:",
   // Form gui thang toi Formspree; khong co endpoint nao khac duoc phep
   "connect-src 'self' https://formspree.io",

@@ -185,24 +185,25 @@ goi rieng"* — nhung **chua chot giai doan ho tro mien phi keo dai bao lau** (3
 
 ## 5. DE XUAT — Chua lam, can quyet dinh
 
-### Tu host font (nen lam)
+### Font va duong render — DA LAM
 
-Go han Google khoi buc tranh. Duoc ba thu cung luc:
+Da bo Google Fonts, chuyen sang system font:
 
-- Bot mot ben thu ba (Google dang thay IP cua moi khach vao trang)
-- Bot request chan hien thi cuoi cung
-- CSP siet duoc thanh `style-src 'self' 'unsafe-inline'` va `font-src 'self'`
+- Khong con ben thu ba thay IP cua khach
+- Khong con request font chan hien thi
+- CSP da siet ve `style-src 'self' 'unsafe-inline'` va `font-src 'self'`
 
-Dung font bien thien nen chi them 2 file. Hien Inter va JetBrains Mono nap tu
-`fonts.googleapis.com`, xem `index.html` va `src/main.tsx`.
+Muc tieu la toc do va do on dinh, nen dung font san co tren he dieu hanh thay vi them hai
+file font vao repo.
 
-### Prerender (can quyet dinh, doi quy trinh build)
+### Prerender — DA LAM
 
-Trang la SPA render hoan toan phia trinh duyet, nen **Google phai chay JavaScript moi thay
-duoc mot chu nao**. Google lam duoc nhung cham hon va khong dam bao 100%.
+Build hien sinh client bundle + SSR bundle, sau do `scripts/prerender.mjs` chen toan bo
+noi dung va JSON-LD vao `dist/index.html`. React dung `hydrateRoot`; tat JavaScript van
+doc duoc trang.
 
-Playwright da cai san (dung cho `npm run shots`), nen them mot buoc sau `vite build` de
-sinh HTML tinh la kha thi. Doi lai la them do phuc tap vao quy trinh build.
+`npm run smoke` co context tat JavaScript de chan hoi quy. CI chay smoke va Lighthouse
+budgets truoc moi lan deploy.
 
 ### Bay thoi gian tren form — DA RUT LAI
 
@@ -231,4 +232,7 @@ Chi lam khi **thay spam that lot vao hop thu**, luc do moi biet chan cai gi.
 - **`npm audit`**: 0 vulnerabilities (da nang sharp 0.33 -> 0.35.3 vi 4 CVE libvips muc high).
 - **W3C Nu Html Checker**: 0 messages.
 - **Anh chup san pham**: `npm run shots` tu chup 5 site, xuat WebP hai kich thuoc dung srcset.
-- **Kiem tra truoc khi push**: `npm run smoke` va `npm run audit` — xem README.
+- **Kiem tra truoc khi push**: `npm run build:pages` roi `npm run verify:preview` — xem README.
+- **Prerender + hydrate**: noi dung va JSON-LD co san trong HTML tinh; co test tat JavaScript.
+- **Hieu nang mobile**: bo boot screen va Google Fonts; Lighthouse local co quality budgets.
+- **CI quality gate**: dependency audit, build, smoke test va Lighthouse chay tren PR/deploy.

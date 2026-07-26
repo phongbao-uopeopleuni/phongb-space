@@ -9,7 +9,7 @@ type Status = 'idle' | 'sending' | 'sent' | 'error';
 /** Phan biet tung loai loi de bao dung nguyen nhan, khong bao chung mot cau */
 type ErrorKind = 'network' | 'domain' | 'quota' | 'server';
 type FieldName = 'name' | 'phone' | 'email';
-type FieldErrors = Partial<Record<FieldName, string>>;
+type FieldErrors = Partial<Record<FieldName, true>>;
 
 const FIELD_CLASS =
   'w-full rounded-md border border-line bg-bg px-3 py-2 text-[0.9rem] text-fg placeholder:text-muted/70 transition-colors focus:border-accent focus:outline-none disabled:opacity-60';
@@ -29,15 +29,15 @@ export function Contact() {
     const errors: FieldErrors = {};
 
     const name = String(data.get('name') ?? '').trim();
-    if (name.length < 2) errors.name = t.contact.errName;
+    if (name.length < 2) errors.name = true;
 
     // Chi dem chu so: khach hay nhap kem dau cach, dau cham hoac +84
     const digits = String(data.get('phone') ?? '').replace(/\D/g, '');
-    if (digits.length < 8) errors.phone = t.contact.errPhone;
+    if (digits.length < 8) errors.phone = true;
 
     const email = String(data.get('email') ?? '').trim();
     if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) {
-      errors.email = t.contact.errEmail;
+      errors.email = true;
     }
 
     return errors;
@@ -116,11 +116,15 @@ export function Contact() {
   }
 
   function FieldError({ field }: { field: FieldName }) {
-    const err = fieldErrors[field];
-    if (!err) return null;
+    if (!fieldErrors[field]) return null;
+    const message: Record<FieldName, string> = {
+      name: t.contact.errName,
+      phone: t.contact.errPhone,
+      email: t.contact.errEmail,
+    };
     return (
       <p id={`cf-${field}-err`} className="mt-1 text-[0.75rem] text-red-400">
-        {err}
+        {message[field]}
       </p>
     );
   }
@@ -144,7 +148,7 @@ export function Contact() {
                   <MessageCircle size={16} aria-hidden="true" />
                   {t.contact.zalo}
                 </a>
-                <a href={`tel:${CONTACT.phoneRaw}`} className="btn btn-ghost w-full">
+                <a href={`tel:${CONTACT.phoneE164}`} className="btn btn-ghost w-full">
                   <Phone size={16} aria-hidden="true" />
                   {t.contact.call} · {CONTACT.phoneDisplay}
                 </a>
@@ -155,7 +159,7 @@ export function Contact() {
                   <dt className="text-muted">{t.contact.phoneLabel}</dt>
                   <dd className="mt-0.5">
                     <a
-                      href={`tel:${CONTACT.phoneRaw}`}
+                      href={`tel:${CONTACT.phoneE164}`}
                       className="text-fg transition-colors hover:text-accent"
                     >
                       {CONTACT.phoneDisplay}
@@ -263,7 +267,7 @@ export function Contact() {
                 <div className="sm:col-span-2">
                   <label htmlFor="cf-email" className="block font-mono text-[0.75rem] text-muted">
                     {t.contact.fieldEmail}{' '}
-                    <span className="text-muted/70">({t.contact.optional})</span>
+                    <span className="text-muted">({t.contact.optional})</span>
                   </label>
                   <input
                     id="cf-email"

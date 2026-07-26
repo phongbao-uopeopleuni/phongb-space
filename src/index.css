@@ -12,8 +12,8 @@
   --color-accent: #4ade80;
   --color-on-accent: #06130b;
 
-  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
-  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+  --font-sans: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: ui-monospace, 'Cascadia Code', 'SFMono-Regular', Consolas, monospace;
 }
 
 html {
@@ -177,27 +177,6 @@ body {
   animation: blink 1.05s steps(1) infinite;
 }
 
-/* Hien dan khi cuon — trang thai dau, .is-in duoc IntersectionObserver gan vao */
-.reveal {
-  opacity: 0;
-  transform: translateY(14px);
-  transition:
-    opacity 0.6s ease,
-    transform 0.6s ease;
-}
-.reveal-left {
-  opacity: 0;
-  transform: translateX(-18px);
-  transition:
-    opacity 0.6s ease,
-    transform 0.6s ease;
-}
-.reveal.is-in,
-.reveal-left.is-in {
-  opacity: 1;
-  transform: none;
-}
-
 @keyframes spin {
   to {
     transform: rotate(360deg);
@@ -205,22 +184,6 @@ body {
 }
 .spin {
   animation: spin 0.8s linear infinite;
-}
-
-@keyframes boot-bar {
-  from {
-    width: 0%;
-  }
-  to {
-    width: 100%;
-  }
-}
-
-@keyframes fade-out {
-  to {
-    opacity: 0;
-    visibility: hidden;
-  }
 }
 
 /* Skip link — chi hien khi focus bang ban phim */
@@ -258,10 +221,4 @@ body {
     scroll-behavior: auto !important;
   }
 
-  /* Khong de phan tu bi ket o trang thai an neu observer chua kip chay */
-  .reveal,
-  .reveal-left {
-    opacity: 1 !important;
-    transform: none !important;
-  }
 }

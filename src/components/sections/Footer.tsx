@@ -1,7 +1,6 @@
 import { Facebook, Github } from 'lucide-react';
 import { useI18n } from '../../i18n';
 import { CONTACT } from '../../data/config';
-import { Typewriter } from '../Typewriter';
 
 export function Footer() {
   const { t } = useI18n();
@@ -16,7 +15,7 @@ export function Footer() {
     <footer className="border-t border-line py-10">
       <div className="shell flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
         <p className="font-mono text-[0.75rem] leading-relaxed text-muted">
-          <Typewriter text={t.footer.copyright(year)} />
+          {t.footer.copyright(year)} <span aria-hidden="true" className="caret">▍</span>
         </p>
 
         <nav aria-label={t.footer.social}>

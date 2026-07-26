@@ -14,7 +14,10 @@ Song ngu Viet/Anh, mac dinh tieng Viet. Phong cach dev/terminal toi gian, nen to
 Vite 6 · React 19 · TypeScript · Tailwind CSS v4 (`@tailwindcss/vite`) · lucide-react
 
 Khong dung router — trang mot mach cuon doc, dieu huong bang anchor `#id`.
-Khong dung thu vien animation — moi hieu ung lam bang CSS thuan va IntersectionObserver.
+Khong dung thu vien animation; chi giu cac hieu ung CSS nhe khong chan noi dung.
+
+Ban production duoc **prerender thanh HTML tinh** luc build. React dung `hydrateRoot` de
+gan tuong tac len markup co san; tat JavaScript van doc duoc toan bo noi dung va JSON-LD.
 
 Tailwind v4 **khong dung `tailwind.config.js`**. Toan bo mau va font khai bao trong
 khoi `@theme { }` o dau [src/index.css](src/index.css).
@@ -30,7 +33,7 @@ npm run dev
 ```
 
 ```bash
-npm run build
+npm run build:pages
 ```
 
 ```bash
@@ -38,7 +41,8 @@ npm run assets
 ```
 
 - `dev` — chay may chu phat trien tai http://localhost:5173
-- `build` — `tsc --noEmit` roi `vite build`, ket qua trong `dist/`
+- `build` — build cho base `/`, dung khi chuan bi gan ten mien rieng
+- `build:pages` — cung pipeline prerender nhung dung base `/phongb-space/` de deploy/kiem thu
 - `typecheck` — chi kiem tra kieu
 - `og` — sinh lai `public/og-image.png` (1200x630) bang sharp
 - `icons` — sinh lai favicon va apple-touch-icon
@@ -47,34 +51,24 @@ npm run assets
 - `preview:pages` — xem ban build **dung base `/phongb-space/`** nhu khi deploy
 - `smoke` — kiem tra khoi ban build production (xem duoi)
 - `audit` — chay Lighthouse tren ban build production (xem duoi)
+- `verify:preview` — tu mo preview, chay `smoke` + Lighthouse budgets, roi tat preview
 
 ## Kiem tra truoc khi push
 
 ```bash
-npm run build
+npm run build:pages
 ```
 
 ```bash
-npm run preview:pages
+npm run verify:preview
 ```
 
-Roi o cua so khac:
+`verify:preview` mo dung base GitHub Pages va chay hai lop. `smoke` kiem tra noi dung khi
+tat JavaScript, hydrate khong loi, JSON-LD, 5 anh, validation song ngu, so `tel:` E.164,
+khong con Google Fonts va tran ngang o 375 / 414 / 768 / 1280 / 1440px. Lighthouse bat
+buoc dat toi thieu Performance 85, Accessibility 95, Best Practices 90 va SEO 95.
 
-```bash
-npm run smoke
-```
-
-`smoke` mo trang bang trinh duyet sach, cuon het trang roi kiem tra: co ve ra chu khong,
-co loi console hay request 404 khong, 5 anh du an co tai du khong va trinh duyet co chon
-dung ban 800px khong, 37 hieu ung hien dan co chay khong, JSON-LD co khong, font co con
-chan hien thi khong, va tran ngang o 375 / 414 / 768 / 1280 / 1440px. In `DAT` hoac
-`CHUA DAT` va tra ve ma thoat tuong ung.
-
-```bash
-npm run audit
-```
-
-`audit` chay Lighthouse tren cung ban build do.
+CI chay cung cong kiem tra nay cho moi pull request va truoc moi lan deploy `main`.
 
 **Phai dung `preview:pages` chu khong phai `preview`.** `vite preview` khong co bien
 `GITHUB_PAGES` nen phuc vu o base `/`, trong khi `dist` build ra tro toi
@@ -102,7 +96,7 @@ Toa do duong dan SVG nam o **hai cho phai giu khop nhau**:
 
 | File | Dung cho |
 |---|---|
-| [src/components/Logo.tsx](src/components/Logo.tsx) | Logo tren trang (thanh dieu huong, man hinh boot) |
+| [src/components/Logo.tsx](src/components/Logo.tsx) | Logo tren trang (thanh dieu huong) |
 | [scripts/logo-shape.mjs](scripts/logo-shape.mjs) | Favicon, apple-touch-icon, logo trong anh og |
 
 Sua toa do o mot ben thi phai sua ca ben kia, khong thi logo tren trang va logo tren tab
@@ -122,15 +116,15 @@ Duong dan favicon trong `index.html` la **tuong doi, khong co dau `/` o dau**. D
 
 ```
 src/
+├─ entry-server.tsx       Entry SSR dung luc build de sinh HTML tinh
 ├─ i18n.tsx              Context song ngu. Ban `vi` rang buoc `typeof en` nen TypeScript
 │                        bao loi ngay khi mot ngon ngu thieu khoa. Luu chon vao localStorage.
 ├─ data/
 │  ├─ config.ts          Lien he + MOI hang so con phai dien (xem "Cho can dien" ben duoi)
 │  └─ works.ts           5 san pham that. Moi du an tu chua ca hai ngon ngu.
 ├─ lib/asset.ts          asset() — bat buoc dung cho moi file trong public/
-├─ hooks/useReveal.ts    IntersectionObserver, ngat ket noi sau lan dau
 └─ components/
-   ├─ Logo  BootScreen  CustomCursor  ScrollProgress  Nav  Reveal  SectionHead  Typewriter
+   ├─ Logo  CustomCursor  ScrollProgress  Nav  Reveal  SectionHead
    └─ sections/   Hero · Works · Services · Process · Deliverables · Faq · Contact · Footer
 ```
 
@@ -306,7 +300,6 @@ doi kieu, them ten font co san vao hai hang `SANS` / `MONO` trong script.
 
 - Moi `img` co `alt` dung nghia, anh trang tri de `alt=""`
 - Khoi anh co ti le co dinh san (`aspect-video`) nen khong nhay bo cuc khi anh tai xong
-- Hieu ung go chu co `sr-only` chua chuoi day du, phan go dan `aria-hidden`
 - Skip link an, chi hien khi focus bang ban phim
 - `:focus-visible` vien mau nhan 2px, `outline-offset: 2px`
 - Accordion FAQ dieu khien duoc bang ban phim, co `aria-expanded` / `aria-controls`
