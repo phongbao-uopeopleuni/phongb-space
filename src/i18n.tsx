@@ -66,6 +66,7 @@ const en = {
     popular: 'Most popular',
     fromLabel: 'From',
     timelineLabel: 'Delivery',
+    dayUnit: 'days',
     pending: 'updating',
     cta: 'Ask about this package',
     basic: {
@@ -199,7 +200,7 @@ const en = {
       },
       {
         q: 'Do I have to prepare the photos and the text myself?',
-        a: 'You send me what you have: phone photos, a photographed menu, a few sentences about the shop. I write and tidy the copy and arrange the images. If your photos are not usable I will say so honestly and tell you what to reshoot — a good photo of the food changes more than any design trick.',
+        a: 'Photos need to come from the shop, and please send the high-resolution originals. Images re-downloaded from Facebook or Zalo are already compressed; blown up on a large screen they turn blurry, and nothing can recover that. A modern phone camera is more than good enough — just send the original file rather than a copy that has been through a messaging app. For the text, a few lines about the shop are enough; I edit from there.',
       },
       {
         q: 'Can I edit the content myself afterwards?',
@@ -305,6 +306,7 @@ const vi: typeof en = {
     popular: 'Phổ biến nhất',
     fromLabel: 'Từ',
     timelineLabel: 'Bàn giao',
+    dayUnit: 'ngày',
     pending: 'đang cập nhật',
     cta: 'Hỏi về gói này',
     basic: {
@@ -438,7 +440,7 @@ const vi: typeof en = {
       },
       {
         q: 'Tôi có cần tự chuẩn bị ảnh và nội dung không?',
-        a: 'Chỉ cần gửi những gì đang có: ảnh chụp bằng điện thoại, ảnh tờ thực đơn, vài dòng giới thiệu về quán. Tôi biên tập lại câu chữ và sắp xếp hình ảnh. Nếu ảnh chưa đạt, tôi sẽ nói rõ và hướng dẫn cách chụp lại — một tấm ảnh món ăn hấp dẫn có sức thuyết phục hơn mọi thủ pháp thiết kế.',
+        a: 'Phần hình ảnh cần phía quán cung cấp, và nên gửi bản gốc dung lượng cao. Ảnh tải lại từ Facebook hay Zalo đã bị nén, phóng lên màn hình lớn sẽ nhoè và không cách nào khôi phục. Điện thoại hiện nay chụp là đủ chất lượng — chỉ cần gửi đúng file gốc thay vì ảnh đã qua tin nhắn. Phần câu chữ thì vài dòng mô tả về quán là đủ, tôi biên tập lại.',
       },
       {
         q: 'Sau này tôi tự sửa được không?',

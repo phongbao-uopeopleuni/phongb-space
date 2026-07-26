@@ -37,21 +37,26 @@ export const STATS = {
 
 /**
  * Ba goi dich vu.
- * TODO: dien `priceFrom` (khoang gia "tu ...") va `timeline` (thoi gian ban giao)
- * cho ca ba goi. Chuoi rong se duoc render thanh "dang cap nhat" thay vi so bia.
+ *
+ * `timelineDays` chi ghi CON SO, khong ghi don vi: don vi ("ngay" / "days") nam trong
+ * src/i18n.tsx de ban tieng Anh khong hien chu tieng Viet. Viet '1-3 ngay' vao day
+ * thi khach My se doc thay '1-3 ngay'.
+ *
+ * TODO: dien `priceFrom` (khoang gia "tu ...") cho ca ba goi, va `timelineDays` cho
+ * goi standard va premium. Chuoi rong se duoc render thanh "dang cap nhat".
  */
 export const PRICING = {
   basic: {
     priceFrom: '' as string,
-    timeline: '' as string,
+    timelineDays: '1–3' as string,
   },
   standard: {
     priceFrom: '' as string,
-    timeline: '' as string,
+    timelineDays: '' as string,
   },
   premium: {
     priceFrom: '' as string,
-    timeline: '' as string,
+    timelineDays: '' as string,
   },
 } as const;
 

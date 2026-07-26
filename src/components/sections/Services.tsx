@@ -76,8 +76,12 @@ export function Services() {
                   </div>
                   <div className="flex items-baseline justify-between gap-2">
                     <dt className="text-muted">{t.services.timelineLabel}</dt>
-                    <dd className={pkg.price.timeline ? 'text-fg' : 'text-muted'}>
-                      {pkg.price.timeline || t.services.pending}
+                    {/* Don vi ngay lay tu i18n, khong nhet vao config, de ban tieng Anh
+                        khong hien chu tieng Viet */}
+                    <dd className={pkg.price.timelineDays ? 'text-fg' : 'text-muted'}>
+                      {pkg.price.timelineDays
+                        ? `${pkg.price.timelineDays} ${t.services.dayUnit}`
+                        : t.services.pending}
                     </dd>
                   </div>
                 </dl>
