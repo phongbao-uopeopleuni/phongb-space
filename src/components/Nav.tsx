@@ -83,15 +83,19 @@ export function Nav() {
         </ul>
 
         <div className="flex items-center gap-2">
+          {/* Khong dat aria-label de len chu: WCAG 2.5.3 doi ten truy cap phai CHUA
+              chu nhin thay. Chu hien la "vi / en" ma aria-label lai la "Doi ngon ngu"
+              thi nguoi dung lenh giong noi doc thay mot dang, noi mot dang khac.
+              De chu hien nguyen ven roi them mo ta an cho trinh doc man hinh. */}
           <button
             type="button"
             onClick={() => setLang(nextLang)}
-            aria-label={`${t.nav.langLabel}: ${nextLang.toUpperCase()}`}
             className="rounded border border-line px-2 py-1 font-mono text-[0.7rem] text-muted transition-colors hover:border-accent hover:text-accent"
           >
             <span className={lang === 'vi' ? 'text-accent' : ''}>vi</span>
             <span className="mx-1 text-line">/</span>
             <span className={lang === 'en' ? 'text-accent' : ''}>en</span>
+            <span className="sr-only"> — {t.nav.langLabel}</span>
           </button>
 
           {/* Hien o MOI do rong, ke ca dien thoai: muc tieu duy nhat cua trang la

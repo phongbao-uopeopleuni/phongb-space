@@ -66,15 +66,21 @@ for (const work of targets) {
 
     const png = await page.screenshot({ type: 'png' });
 
-    // Qua sharp de ep dung kich thuoc va nen JPEG — PNG anh chup web nang gap nhieu lan
-    const jpg = await sharp(png)
-      .resize(WIDTH, HEIGHT, { fit: 'cover', position: 'top' })
-      .jpeg({ quality: 82, mozjpeg: true })
-      .toBuffer();
+    // Xuat WebP hai kich thuoc de dung srcset: dien thoai tai ban 800px, man hinh lon
+    // moi tai ban 1600px. Truoc day chi co mot ban JPEG 1600px, Lighthouse do duoc
+    // 419 KiB tai thua tren di dong.
+    let total = 0;
+    for (const w of [800, WIDTH]) {
+      const webp = await sharp(png)
+        .resize(w, Math.round((w * HEIGHT) / WIDTH), { fit: 'cover', position: 'top' })
+        .webp({ quality: 76, effort: 5 })
+        .toBuffer();
+      await writeFile(resolve(OUT_DIR, `${work.slug}-${w}.webp`), webp);
+      total += webp.length;
+    }
 
-    await writeFile(resolve(OUT_DIR, `${work.slug}.jpg`), jpg);
-    results.push({ slug: work.slug, ok: true, kb: (jpg.length / 1024).toFixed(0) });
-    console.log(`OK   ${work.slug}.jpg  ${(jpg.length / 1024).toFixed(0)} KB`);
+    results.push({ slug: work.slug, ok: true, kb: (total / 1024).toFixed(0) });
+    console.log(`OK   ${work.slug}-{800,${WIDTH}}.webp  ${(total / 1024).toFixed(0)} KB`);
   } catch (err) {
     results.push({ slug: work.slug, ok: false, error: err.message.split('\n')[0] });
     console.log(`LOI  ${work.slug}: ${err.message.split('\n')[0]}`);

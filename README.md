@@ -40,6 +40,55 @@ npm run assets
 - `og` — sinh lai `public/og-image.png` (1200x630) bang sharp
 - `icons` — sinh lai favicon va apple-touch-icon
 - `assets` — chay ca `icons` va `og`
+- `shots` — chup lai anh man hinh 5 website that (Playwright)
+- `preview:pages` — xem ban build **dung base `/phongb-space/`** nhu khi deploy
+- `smoke` — kiem tra khoi ban build production (xem duoi)
+- `audit` — chay Lighthouse tren ban build production (xem duoi)
+
+## Kiem tra truoc khi push
+
+```bash
+npm run build
+```
+
+```bash
+npm run preview:pages
+```
+
+Roi o cua so khac:
+
+```bash
+npm run smoke
+```
+
+`smoke` mo trang bang trinh duyet sach, cuon het trang roi kiem tra: co ve ra chu khong,
+co loi console hay request 404 khong, 5 anh du an co tai du khong va trinh duyet co chon
+dung ban 800px khong, 37 hieu ung hien dan co chay khong, JSON-LD co khong, font co con
+chan hien thi khong, va tran ngang o 375 / 414 / 768 / 1280 / 1440px. In `DAT` hoac
+`CHUA DAT` va tra ve ma thoat tuong ung.
+
+```bash
+npm run audit
+```
+
+`audit` chay Lighthouse tren cung ban build do.
+
+**Phai dung `preview:pages` chu khong phai `preview`.** `vite preview` khong co bien
+`GITHUB_PAGES` nen phuc vu o base `/`, trong khi `dist` build ra tro toi
+`/phongb-space/assets/...` — ket qua la 404 bundle, trang trang, va moi phep do deu sai.
+
+Hai luu y khi doc ket qua `audit`:
+
+- Chay tren `localhost` nen khong co do tre mang that va khong qua CDN — diem tuyet doi
+  se dep hon PageSpeed Insights. Cai dang tin la **tung audit cu the**, nhat la
+  `render-blocking-insight` va `image-delivery-insight`, vi chung phan anh cau truc
+  trang chu khong phai duong truyen.
+- `Best Practices` khong bao gio dat 100 o local vi `is-on-https` that bai tren
+  `http://localhost`. Tren ban deploy that (HTTPS) muc nay dat 100.
+- Script chan san `*kaspersky-labs.com*`: phan mem diet virus chen JavaScript vao moi
+  trang http tren may va no chan hien thi hon 2 giay, lam sai lech toan bo phep do.
+  Neu may ban dung phan mem khac ma diem Performance thap bat thuong, xem muc
+  `render-blocking-insight` de biet script nao bi chen vao.
 
 ## Logo
 
@@ -89,13 +138,15 @@ Moi du an tu chua ca `vi` va `en`, nen khong phai sua hai mang song song.
 
 ### Anh chup man hinh san pham
 
-Chua co anh. Duong dan da khai bao san: `public/images/works/<slug>.jpg`.
-Trong luc chua co anh, the hien khoi giu cho dang terminal `$ screenshot --pending`
-voi **dung ti le 16:9**, nen khi thay anh that vao bo cuc khong bi nhay.
+Khong them file bang tay — chay `npm run shots`. Script mo tung website that trong
+Chromium, chup dung khung nhin 1600x900 (ra chinh xac 16:9, khop khoi `aspect-video`
+nen thay anh vao bo cuc khong nhay) roi xuat WebP hai kich thuoc `-800` va `-1600`
+de dung `srcset`. Danh sach URL import thang tu `src/data/works.ts`.
 
-Sau khi them file anh, dat `coverReady: true` cho du an do trong `src/data/works.ts`.
-Neu khong bat co nay thi `<img>` khong duoc render — co tinh nhu vay de trang khong
-ban ra request 404 va khong sinh loi console khi anh chua ton tai.
+Chi tiet o [public/images/works/README.md](public/images/works/README.md).
+
+Du an chua co anh thi de `coverReady: false`: the hien khoi giu cho
+`$ screenshot --pending` thay vi `<img>`, tranh request 404 va loi console.
 
 ## Cho can dien
 

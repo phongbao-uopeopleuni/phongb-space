@@ -10,11 +10,18 @@ import { SectionHead } from '../SectionHead';
  * Khoi anh bia. Luon giu ti le 16:9 (aspect-video) ke ca khi chua co anh, de khi thay
  * anh that vao thi bo cuc khong bi nhay.
  */
-function Cover({ work, alt }: { work: Work; alt: string }) {
+function Cover({ work, alt, featured }: { work: Work; alt: string; featured: boolean }) {
   const { t } = useI18n();
   // Neu anh ton tai nhung tai loi thi cung roi ve khoi giu cho, khong hien icon anh vo
   const [failed, setFailed] = useState(false);
   const showPlaceholder = !work.coverReady || failed;
+
+  // The noi bat chiem 2 cot (toi da ~1216px), the thuong chiem 1 cot (~600px tren
+  // man hinh lon, ca chieu rong man hinh tren dien thoai). Bao dung `sizes` de trinh
+  // duyet khong tai ban 1600px ve mot khung 380px.
+  const sizes = featured
+    ? '(min-width: 1200px) 1216px, 100vw'
+    : '(min-width: 768px) 600px, 100vw';
 
   return (
     <div className="relative aspect-video overflow-hidden rounded-md border border-line bg-surface">
@@ -24,7 +31,11 @@ function Cover({ work, alt }: { work: Work; alt: string }) {
         </div>
       ) : (
         <img
-          src={asset(work.cover)}
+          src={asset(`${work.cover}-1600.webp`)}
+          srcSet={`${asset(`${work.cover}-800.webp`)} 800w, ${asset(`${work.cover}-1600.webp`)} 1600w`}
+          sizes={sizes}
+          width={1600}
+          height={900}
           alt={alt}
           loading="lazy"
           decoding="async"
@@ -66,7 +77,7 @@ function WorkCard({ work, index }: { work: Work; index: number }) {
           </div>
         </div>
 
-        <Cover work={work} alt={t.works.screenshotAlt(c.name)} />
+        <Cover work={work} alt={t.works.screenshotAlt(c.name)} featured={featured} />
 
         <div className="flex flex-1 flex-col gap-3">
           <h3 className="text-lg font-semibold leading-snug text-fg">{c.name}</h3>

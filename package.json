@@ -7,10 +7,13 @@
     "dev": "vite",
     "build": "tsc --noEmit && vite build",
     "preview": "vite preview",
+    "preview:pages": "vite preview --base /phongb-space/",
     "typecheck": "tsc --noEmit",
     "og": "node scripts/make-og-image.mjs",
     "icons": "node scripts/make-icons.mjs",
     "shots": "node scripts/make-shots.mjs",
+    "audit": "node scripts/audit.mjs",
+    "smoke": "node scripts/smoke.mjs",
     "assets": "npm run icons && npm run og"
   },
   "dependencies": {
@@ -24,6 +27,7 @@
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
     "@vitejs/plugin-react": "^4.3.4",
+    "lighthouse": "^13.4.1",
     "playwright": "^1.62.0",
     "sharp": "^0.33.5",
     "tailwindcss": "^4.0.0",

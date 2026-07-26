@@ -8,7 +8,10 @@
 export type Work = {
   slug: string;
   url: string;
-  /** Duong dan tuong doi trong public/. Phai di qua asset() truoc khi dat vao src. */
+  /**
+   * Duong dan tuong doi trong public/, KHONG co duoi file: component tu ghep
+   * `-800.webp` va `-1600.webp` de dung srcset. Phai di qua asset() truoc khi dat vao src.
+   */
   cover: string;
   /**
    * Bat len khi da co file anh that trong public/images/works/.
@@ -31,7 +34,7 @@ export const works: Work[] = [
   {
     slug: 'phong-tuy-bien-quan-cong',
     url: 'https://www.phongtuybienquancong.info/',
-    cover: 'images/works/phong-tuy-bien-quan-cong.jpg',
+    cover: 'images/works/phong-tuy-bien-quan-cong',
     coverReady: true,
     stack: ['Web app', 'Cloudflare'],
     featured: true,
@@ -71,7 +74,7 @@ export const works: Work[] = [
   {
     slug: 'ec-pho-noodle-house',
     url: 'https://www.ecphonoodlehousenc.com/home-page',
-    cover: 'images/works/ec-pho-noodle-house.jpg',
+    cover: 'images/works/ec-pho-noodle-house',
     coverReady: true,
     stack: ['React', 'Vite', 'Vercel', 'schema.org'],
     copy: {
@@ -102,7 +105,7 @@ export const works: Work[] = [
   {
     slug: 'fairys-house-hue',
     url: 'https://www.fairyshousehue.com/',
-    cover: 'images/works/fairys-house-hue.jpg',
+    cover: 'images/works/fairys-house-hue',
     coverReady: true,
     stack: ['React', 'Vite', 'Song ngữ', 'SEO local'],
     copy: {
@@ -137,7 +140,7 @@ export const works: Work[] = [
   {
     slug: 'north-carolina-pho',
     url: 'https://ncpho-ten.vercel.app/',
-    cover: 'images/works/north-carolina-pho.jpg',
+    cover: 'images/works/north-carolina-pho',
     coverReady: true,
     stack: ['React', 'Vite', 'Vercel'],
     wip: true,
@@ -169,7 +172,7 @@ export const works: Work[] = [
   {
     slug: 'ec-star-nails-spa',
     url: 'https://www.ecstarnailsandspagreenvillenc.com/',
-    cover: 'images/works/ec-star-nails-spa.jpg',
+    cover: 'images/works/ec-star-nails-spa',
     coverReady: true,
     // Ghi ro nen tang: khach se chi vao mot san pham cu the va hoi "lam cho toi giong cai nay
     // duoc khong". Neu ho chi vao cai nay ma bao gia nhu site code tay thi lech ky vong ngay tu dau.
