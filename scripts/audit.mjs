@@ -87,6 +87,7 @@ if (clean) console.log('  (khong co)');
 
 // In chi tiet may audit hay phai soi. Lighthouse 13 doi ten sang *-insight nen thu ca hai.
 for (const id of [
+  'largest-contentful-paint-element',
   'render-blocking-insight',
   'render-blocking-resources',
   'image-delivery-insight',
