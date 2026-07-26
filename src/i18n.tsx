@@ -36,14 +36,13 @@ const en = {
     eyebrow: '// gioi-thieu',
     role: 'Freelance web design',
     title: 'Websites for restaurants, homestays and service shops',
-    lede: 'I build the kind of website that brings customers in: found on Google, easy to read on a phone, one tap to call or message you on Zalo. Five sites delivered and running, for owners in Vietnam and in the United States.',
+    lede: 'I build the kind of website that brings customers in: found on Google, easy to read on a phone, one tap to call or message you on Zalo.',
     ctaPrimary: 'Message me on Zalo',
     ctaSecondary: 'See real work',
     statsDelivered: 'websites delivered',
     statsCountries: 'countries',
     statsDelivery: 'average delivery',
     statsDeliveryPending: 'delivery time — updating',
-    byline: 'Bao Phong — Hue, Vietnam',
   },
 
   works: {
@@ -276,14 +275,13 @@ const vi: typeof en = {
     eyebrow: '// gioi-thieu',
     role: 'Thiết kế website freelance',
     title: 'Thiết kế website cho nhà hàng, homestay và tiệm dịch vụ',
-    lede: 'Tôi làm loại website mang khách tới: khách tìm thấy quán trên Google, xem thực đơn gọn gàng trên điện thoại, bấm một cái là gọi hoặc nhắn Zalo cho anh chị. Đã bàn giao 5 website đang chạy, cho chủ quán ở Việt Nam và ở Hoa Kỳ.',
+    lede: 'Tôi làm loại website mang khách tới: khách tìm thấy quán trên Google, xem thực đơn gọn gàng trên điện thoại, bấm một cái là gọi hoặc nhắn Zalo cho anh chị.',
     ctaPrimary: 'Nhắn Zalo cho tôi',
     ctaSecondary: 'Xem sản phẩm thật',
     statsDelivered: 'website đã bàn giao',
     statsCountries: 'quốc gia',
     statsDelivery: 'thời gian bàn giao',
     statsDeliveryPending: 'thời gian bàn giao — đang cập nhật',
-    byline: 'Bảo Phong — Huế, Việt Nam',
   },
 
   works: {

@@ -79,9 +79,6 @@ export function Hero() {
           ))}
         </div>
 
-        <Reveal delay={120}>
-          <p className="cmd mt-6">{t.hero.byline}</p>
-        </Reveal>
       </div>
     </section>
   );
