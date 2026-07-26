@@ -154,13 +154,27 @@ Toan bo nam trong [src/data/config.ts](src/data/config.ts), danh dau `TODO`:
 
 | Hang so | Noi dung |
 |---|---|
-| `PRICING.basic/standard/premium.priceFrom` | Khoang gia "tu ..." cua tung goi |
-| `PRICING.basic/standard/premium.timeline` | Thoi gian ban giao tung goi |
+| `PRICING.standard/premium.timelineDays` | So ngay ban giao hai goi lon — **chi ghi so**, vi du `'5–7'` |
 | `PROCESS_DURATIONS` | Thoi gian 4 buoc trong quy trinh |
-| `YEARLY_UPKEEP` | Chi phi duy tri hang nam (chen vao cau tra loi FAQ) |
 | `STATS.avgDeliveryDays` | Thoi gian ban giao trung binh (dai so lieu o hero) |
 | `FORMSPREE_ENDPOINT` | Endpoint Formspree cho form lien he |
 | `SITE_URL` | Ten mien chinh thuc cua trang nay |
+
+Da dien xong: `PRICING.*.priceFrom` / `priceTo`, `PRICING.basic.timelineDays`,
+`YEARLY_UPKEEP_MAX`, `YEARLY_MAINTENANCE`.
+
+### Quy uoc: so nam trong du lieu, don vi nam trong i18n
+
+Tien va so ngay luu duoi dang **so thuan** trong `config.ts`, khong phai chuoi. Don vi
+(`ngay`/`days`, `₫`/`VND`) nam trong `src/i18n.tsx`, con viec dinh dang do
+`src/lib/copy.ts` lo bang `Intl.NumberFormat`.
+
+Ly do: viet san `'5.000.000 d'` vao config thi khach xem ban tieng Anh se doc thay dau
+phan cach kieu Viet — voi nguoi My, `5.000.000` doc ra la "nam phay khong khong khong".
+
+Hai the `{{upkeep}}` va `{{maintenance}}` trong cau tra loi FAQ duoc `fillCopy()` thay
+bang so da dinh dang. **Ca phan hien tren trang va phan JSON-LD deu goi cung ham nay** —
+schema lech chu voi noi dung nguoi doc nhin thay la ly do Google phat.
 
 Cho nao con rong thi giao dien hien "dang cap nhat" thay vi mot con so bia.
 Rieng `FORMSPREE_ENDPOINT` con rong thi form bi vo hieu va **khong render nut Gui** —

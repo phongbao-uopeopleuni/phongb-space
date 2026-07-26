@@ -79,11 +79,19 @@ export const PRICING: Record<'basic' | 'standard' | 'premium', Pkg> = {
 export const PROCESS_DURATIONS: readonly string[] = ['', '', '', ''];
 
 /**
- * Chi phi duy tri hang nam (ten mien + hosting).
- * TODO: dien khoang chi phi thuc te. Chuoi nay duoc chen vao cau tra loi FAQ
- * qua the {{upkeep}}; khi con rong se hien "dang cap nhat".
+ * Hai khoan chi hang nam, TACH BIET nhau — dung gop lai khi viet noi dung:
+ *
+ * - `YEARLY_UPKEEP_MAX`: tran chi phi gia han ten mien + hosting. Khach dung ten va
+ *   tra truc tiep cho nha cung cap, tien khong di qua Bao Phong.
+ * - `YEARLY_MAINTENANCE`: phi bao tri mot nam, tra cho Bao Phong.
+ *
+ * Luu duoi dang so thuan de component dinh dang theo tung ngon ngu (xem PRICING).
+ * Dat `null` neu chua chot; giao dien se hien "dang cap nhat".
+ *
+ * Hai gia tri nay duoc chen vao cau tra loi FAQ qua the {{upkeep}} va {{maintenance}}.
  */
-export const YEARLY_UPKEEP = '' as string;
+export const YEARLY_UPKEEP_MAX: number | null = 1_000_000;
+export const YEARLY_MAINTENANCE: number | null = 2_000_000;
 
 /**
  * Endpoint Formspree cho form lien he.

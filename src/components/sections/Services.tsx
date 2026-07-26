@@ -1,18 +1,16 @@
 import { Check } from 'lucide-react';
 import { useI18n } from '../../i18n';
 import { CONTACT, PRICING } from '../../data/config';
+import { money } from '../../lib/copy';
 import { Reveal } from '../Reveal';
 import { SectionHead } from '../SectionHead';
 
 export function Services() {
   const { t, lang } = useI18n();
 
-  // Dinh dang so tien theo ngon ngu dang xem: vi-VN dung dau cham phan cach nghin,
-  // en-US dung dau phay. Gia luu trong config la so thuan nen doi duoc ca hai kieu.
-  const money = new Intl.NumberFormat(lang === 'vi' ? 'vi-VN' : 'en-US');
   const priceRange = (from: number | null, to: number | null) =>
     from !== null && to !== null
-      ? `${money.format(from)} – ${money.format(to)} ${t.services.currency}`
+      ? `${money(from, lang)} – ${money(to, lang)} ${t.services.currency}`
       : null;
 
   const packages = [

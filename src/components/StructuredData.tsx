@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useI18n } from '../i18n';
 import { CONTACT, SITE_URL } from '../data/config';
+import { fillCopy } from '../lib/copy';
 
 const TAG_ID = 'phongb-jsonld';
 
@@ -38,10 +39,14 @@ export function StructuredData() {
       knowsLanguage: ['vi', 'en'],
     };
 
-    // Chi dua vao schema nhung cau tra loi khong con cho trong: schema phai khop
-    // chu voi noi dung nguoi doc nhin thay tren trang.
+    // Dien the {{...}} bang dung ham ma phan hien thi dung, roi loai nhung cau van con
+    // cho trong: schema phai khop chu voi noi dung nguoi doc nhin thay tren trang.
     const faqItems = t.faq.items
-      .filter((item) => !item.a.includes('{{'))
+      .map((item) => ({
+        q: item.q,
+        a: fillCopy(item.a, lang, t.services.currency, t.services.pending),
+      }))
+      .filter((item) => !item.a.includes(t.services.pending))
       .map((item) => ({
         '@type': 'Question',
         name: item.q,

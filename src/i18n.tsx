@@ -189,9 +189,9 @@ const en = {
           'A short written guide, in plain language, for the things you will change often: prices, opening hours, new photos.',
       },
       {
-        name: 'Maintenance in the early period',
+        name: 'Support right after handover',
         detail:
-          'After handover I stay available to fix anything broken and answer questions, so you are not left alone with a new website.',
+          'In the period right after handover I stay available to fix anything broken and answer questions, so a freshly delivered website is never left to run itself. Maintenance for the years after that is a separate package.',
       },
     ],
   },
@@ -215,7 +215,7 @@ const en = {
       },
       {
         q: 'What does it cost to keep running each year?',
-        a: 'The yearly cost is the domain name plus hosting: {{upkeep}}. There is no hidden monthly fee to me. You pay those two directly, in your own name, so the website stays yours.',
+        a: 'Two separate costs. First, the domain and hosting: they stay in the shop name and are renewed directly with the provider, no more than {{upkeep}} a year. That money never passes through me — which is exactly what keeps the site the shop’s own property. Second, maintenance: around {{maintenance}} a year, covering fixes, updates and support when needed.',
       },
       {
         q: 'I already have a Facebook page. Do I need a website?',
@@ -435,9 +435,9 @@ const vi: typeof en = {
           'Một bản hướng dẫn ngắn, viết bằng lời dễ hiểu, cho những nội dung thay đổi thường xuyên: giá, giờ mở cửa, ảnh mới.',
       },
       {
-        name: 'Bảo trì trong thời gian đầu',
+        name: 'Hỗ trợ ngay sau bàn giao',
         detail:
-          'Sau bàn giao tôi vẫn theo để sửa lỗi và trả lời thắc mắc, không để một website vừa nhận phải tự loay hoay vận hành.',
+          'Giai đoạn đầu sau bàn giao tôi vẫn theo để sửa lỗi và trả lời thắc mắc, không để một website vừa nhận phải tự loay hoay vận hành. Bảo trì cho những năm tiếp theo là một gói riêng.',
       },
     ],
   },
@@ -461,7 +461,7 @@ const vi: typeof en = {
       },
       {
         q: 'Chi phí duy trì hằng năm bao nhiêu?',
-        a: 'Chi phí hằng năm gồm tên miền và hosting: {{upkeep}}. Không có khoản phí hằng tháng nào trả cho tôi. Hai khoản trên do phía quán đứng tên và thanh toán trực tiếp, để website luôn thuộc quyền sở hữu của quán.',
+        a: 'Có hai khoản và chúng tách biệt. Thứ nhất là tên miền cùng hosting: phía quán đứng tên và gia hạn trực tiếp với nhà cung cấp, không quá {{upkeep}} mỗi năm. Khoản này không đi qua tôi — đó chính là điều giữ cho website luôn thuộc quyền sở hữu của quán. Thứ hai là bảo trì, khoảng {{maintenance}} một năm, gồm sửa lỗi, cập nhật và hỗ trợ khi cần.',
       },
       {
         q: 'Tôi đã có Facebook rồi thì có cần website không?',

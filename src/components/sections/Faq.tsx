@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import { Plus } from 'lucide-react';
 import { useI18n } from '../../i18n';
-import { YEARLY_UPKEEP } from '../../data/config';
+import { fillCopy } from '../../lib/copy';
 import { Reveal } from '../Reveal';
 import { SectionHead } from '../SectionHead';
 
 export function Faq() {
-  const { t } = useI18n();
+  const { t, lang } = useI18n();
   const [open, setOpen] = useState<number | null>(0);
 
   return (
@@ -17,9 +17,9 @@ export function Faq() {
         <Reveal className="mt-10 max-w-3xl overflow-hidden rounded-lg border border-line">
           {t.faq.items.map((item, i) => {
             const isOpen = open === i;
-            // Chi phi duy tri chua chot: the {{upkeep}} duoc thay bang so thuc te
-            // khi da dien vao config, con khong thi hien "dang cap nhat"
-            const answer = item.a.replace('{{upkeep}}', YEARLY_UPKEEP || t.services.pending);
+            // The {{upkeep}} / {{maintenance}} duoc thay bang so da dinh dang theo
+            // ngon ngu. Dung chung ham voi StructuredData de schema khong lech chu.
+            const answer = fillCopy(item.a, lang, t.services.currency, t.services.pending);
 
             return (
               <div key={item.q} className={i > 0 ? 'border-t border-line' : ''}>
