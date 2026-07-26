@@ -69,7 +69,7 @@ const en = {
     pending: 'updating',
     cta: 'Ask about this package',
     basic: {
-      name: 'One-page site',
+      name: 'Landing page',
       tagline: 'One scrolling page with everything a customer needs to call you.',
       items: [
         'A single page: intro, menu or services, address',
@@ -308,7 +308,7 @@ const vi: typeof en = {
     pending: 'đang cập nhật',
     cta: 'Hỏi về gói này',
     basic: {
-      name: 'Trang một mạch',
+      name: 'Landing page',
       tagline: 'Một trang cuộn dọc, đủ thông tin để khách gọi ngay.',
       items: [
         'Một trang: giới thiệu, thực đơn hoặc dịch vụ, địa chỉ',
