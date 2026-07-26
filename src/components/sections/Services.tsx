@@ -5,7 +5,15 @@ import { Reveal } from '../Reveal';
 import { SectionHead } from '../SectionHead';
 
 export function Services() {
-  const { t } = useI18n();
+  const { t, lang } = useI18n();
+
+  // Dinh dang so tien theo ngon ngu dang xem: vi-VN dung dau cham phan cach nghin,
+  // en-US dung dau phay. Gia luu trong config la so thuan nen doi duoc ca hai kieu.
+  const money = new Intl.NumberFormat(lang === 'vi' ? 'vi-VN' : 'en-US');
+  const priceRange = (from: number | null, to: number | null) =>
+    from !== null && to !== null
+      ? `${money.format(from)} – ${money.format(to)} ${t.services.currency}`
+      : null;
 
   const packages = [
     { key: 'basic' as const, copy: t.services.basic, price: PRICING.basic, popular: false },
@@ -68,10 +76,16 @@ export function Services() {
                 {/* Gia va thoi gian ban giao lay tu config; con rong thi hien
                     "dang cap nhat" thay vi mot con so bia */}
                 <dl className="mt-auto space-y-1 border-t border-line pt-4 font-mono text-[0.8rem]">
-                  <div className="flex items-baseline justify-between gap-2">
+                  <div className="flex flex-wrap items-baseline justify-between gap-x-2">
                     <dt className="text-muted">{t.services.fromLabel}</dt>
-                    <dd className={pkg.price.priceFrom ? 'text-accent' : 'text-muted'}>
-                      {pkg.price.priceFrom || t.services.pending}
+                    <dd
+                      className={
+                        priceRange(pkg.price.priceFrom, pkg.price.priceTo)
+                          ? 'text-accent'
+                          : 'text-muted'
+                      }
+                    >
+                      {priceRange(pkg.price.priceFrom, pkg.price.priceTo) ?? t.services.pending}
                     </dd>
                   </div>
                   <div className="flex items-baseline justify-between gap-2">
@@ -98,6 +112,13 @@ export function Services() {
             </Reveal>
           ))}
         </div>
+
+        {/* Noi ro day la khoang du kien, tranh khach hieu la gia chot */}
+        <Reveal delay={120}>
+          <p className="mt-6 max-w-2xl text-[0.8rem] leading-relaxed text-muted">
+            {t.services.priceNote}
+          </p>
+        </Reveal>
       </div>
     </section>
   );

@@ -64,9 +64,12 @@ const en = {
     title: 'Three packages',
     lede: 'Three scales for three different needs. Not sure which one fits? Get in touch and I will advise based on what the shop actually needs — not on the most expensive package.',
     popular: 'Most popular',
-    fromLabel: 'From',
+    fromLabel: 'Estimated',
     timelineLabel: 'Delivery',
     dayUnit: 'days',
+    currency: 'VND',
+    priceNote:
+      'Estimated ranges. The final figure is agreed once the scope is clear — how many pages, how much content, whether a custom feature is involved.',
     pending: 'updating',
     cta: 'Ask about this package',
     basic: {
@@ -304,9 +307,12 @@ const vi: typeof en = {
     title: 'Ba gói dịch vụ',
     lede: 'Ba quy mô cho ba nhu cầu khác nhau. Nếu chưa rõ nên chọn mức nào, liên hệ để tôi tư vấn theo nhu cầu thực tế — không phải theo gói đắt nhất.',
     popular: 'Phổ biến nhất',
-    fromLabel: 'Từ',
+    fromLabel: 'Dự kiến',
     timelineLabel: 'Bàn giao',
     dayUnit: 'ngày',
+    currency: '₫',
+    priceNote:
+      'Giá dự kiến. Con số cuối chốt sau khi rõ phạm vi công việc — bao nhiêu trang, lượng nội dung, có tính năng riêng hay không.',
     pending: 'đang cập nhật',
     cta: 'Hỏi về gói này',
     basic: {

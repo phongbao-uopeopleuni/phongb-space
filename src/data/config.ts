@@ -36,29 +36,40 @@ export const STATS = {
 } as const;
 
 /**
- * Ba goi dich vu.
+ * Ba goi dich vu. Gia la khoang du kien, tinh bang VND.
  *
- * `timelineDays` chi ghi CON SO, khong ghi don vi: don vi ("ngay" / "days") nam trong
- * src/i18n.tsx de ban tieng Anh khong hien chu tieng Viet. Viet '1-3 ngay' vao day
- * thi khach My se doc thay '1-3 ngay'.
+ * Gia luu duoi dang SO THUAN, khong phai chuoi: component dinh dang lai theo tung
+ * ngon ngu bang Intl.NumberFormat (vi-VN cho ra 5.000.000, en-US cho ra 5,000,000).
+ * Viet san '5.000.000 d' vao day thi khach My se doc thay dau phan cach kieu Viet.
  *
- * TODO: dien `priceFrom` (khoang gia "tu ...") cho ca ba goi, va `timelineDays` cho
- * goi standard va premium. Chuoi rong se duoc render thanh "dang cap nhat".
+ * `timelineDays` cung chi ghi CON SO — don vi "ngay" / "days" nam trong src/i18n.tsx.
+ *
+ * Dat `null` cho muc nao chua chot; giao dien se hien "dang cap nhat".
+ * TODO: dien `timelineDays` cho goi standard va premium.
  */
-export const PRICING = {
+type Pkg = {
+  priceFrom: number | null;
+  priceTo: number | null;
+  timelineDays: string;
+};
+
+export const PRICING: Record<'basic' | 'standard' | 'premium', Pkg> = {
   basic: {
-    priceFrom: '' as string,
-    timelineDays: '1–3' as string,
+    priceFrom: 500_000,
+    priceTo: 800_000,
+    timelineDays: '1–3',
   },
   standard: {
-    priceFrom: '' as string,
-    timelineDays: '' as string,
+    priceFrom: 5_000_000,
+    priceTo: 10_000_000,
+    timelineDays: '',
   },
   premium: {
-    priceFrom: '' as string,
-    timelineDays: '' as string,
+    priceFrom: 10_000_000,
+    priceTo: 20_000_000,
+    timelineDays: '',
   },
-} as const;
+};
 
 /**
  * Thoi gian tung buoc trong quy trinh, theo dung thu tu 4 buoc o src/i18n.tsx.
