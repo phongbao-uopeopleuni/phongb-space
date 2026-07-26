@@ -36,7 +36,7 @@ const en = {
     eyebrow: '// gioi-thieu',
     role: 'Freelance web design',
     title: 'Websites for restaurants, homestays and service shops',
-    lede: 'I build the kind of website that brings customers in: found on Google, easy to read on a phone, one tap to call or message you on Zalo.',
+    lede: 'I design websites with one goal: bringing customers in. The shop shows up when people search on Google, the menu reads cleanly on a phone, and one tap places a call or opens Zalo.',
     ctaPrimary: 'Message me on Zalo',
     ctaSecondary: 'See real work',
     statsDelivered: 'websites delivered',
@@ -46,10 +46,10 @@ const en = {
   },
 
   works: {
-    eyebrow: '// san-pham-that',
-    cmd: '$ ls ./san-pham-that',
-    title: 'Five websites, live right now',
-    lede: 'Not mockups. Every link below opens a site a real business is using today. Tap through and see for yourself.',
+    eyebrow: '// san-pham',
+    cmd: '$ ls ./da-ban-giao',
+    title: 'Five websites, currently live',
+    lede: 'All five are live. Best opened on a phone: tap the call button, scroll the menu, watch how the photos load on mobile data — that is exactly how a customer meets a shop for the first time.',
     featured: 'Featured',
     wip: 'Work in progress',
     visit: 'Open website',
@@ -62,7 +62,7 @@ const en = {
     eyebrow: '// dich-vu',
     cmd: '$ cat ./goi-dich-vu',
     title: 'Three packages',
-    lede: 'Pick the one that matches your shop. Not sure? Send me a message and I will tell you honestly which one you actually need.',
+    lede: 'Three scales for three different needs. Not sure which one fits? Get in touch and I will advise based on what the shop actually needs — not on the most expensive package.',
     popular: 'Most popular',
     fromLabel: 'From',
     timelineLabel: 'Delivery',
@@ -108,8 +108,8 @@ const en = {
   process: {
     eyebrow: '// quy-trinh',
     cmd: '$ ./quy-trinh --steps 4',
-    title: 'How we work together',
-    lede: 'You do not need to know anything technical. You talk about your shop; I handle the rest.',
+    title: 'How the work runs',
+    lede: 'No technical knowledge needed. Information about the shop and some photos are enough; the build is my side of it.',
     pending: 'updating',
     steps: [
       {
@@ -143,7 +143,7 @@ const en = {
     eyebrow: '// ban-giao',
     cmd: '$ cat ./khach-nhan-duoc-gi',
     title: 'What you actually get',
-    lede: 'Concretely, this is what is in your hands when the work is done.',
+    lede: 'A concrete list of what is handed over when the work is complete.',
     items: [
       {
         name: 'Your own domain name',
@@ -171,7 +171,7 @@ const en = {
           'One tap to phone you, one tap to open Zalo, one tap for driving directions. This is where the enquiries actually come from.',
       },
       {
-        name: 'Bilingual if you need it',
+        name: 'Bilingual when needed',
         detail:
           'Vietnamese and English on the same site with a switch, useful for tourist areas and for shops serving American customers.',
       },
@@ -226,26 +226,26 @@ const en = {
 
   contact: {
     eyebrow: '// lien-he',
-    title: 'Tell me about your shop',
-    lede: 'The fastest way is Zalo — send me your shop name and what you sell, and I will reply with an honest answer about what you need and what it costs.',
+    title: 'Let us talk about the website',
+    lede: 'The fastest route is Zalo: send the shop name and the type of business, and I will reply straight about the scope needed and the rough cost.',
     zalo: 'Message on Zalo',
     call: 'Call',
     emailLabel: 'Email',
     phoneLabel: 'Phone / Zalo',
     formTitle: 'Or leave your details here',
     formNote: 'I reply within one working day.',
-    fieldName: 'Your name',
+    fieldName: 'Full name',
     fieldPhone: 'Phone number',
     fieldBusiness: 'Type of business',
     fieldBusinessPlaceholder: 'Restaurant, homestay, nail salon…',
     fieldNote: 'Anything you want to add',
-    fieldNotePlaceholder: 'What you need, when you need it by…',
+    fieldNotePlaceholder: 'Specific needs, target completion date…',
     submit: 'Send',
     sending: 'Sending…',
-    sent: 'Thank you — I have your message and will reply within one working day.',
-    error: 'Something went wrong. Please message me on Zalo instead.',
+    sent: 'Message received. I will reply within one working day.',
+    error: 'Sending failed. Please get in touch via Zalo.',
     formDisabled:
-      'The form is not connected yet. Please use the Zalo button or the phone number above — those reach me directly.',
+      'The form is not connected yet. Please use the Zalo button or the phone number above — both reach me directly.',
     required: 'required',
   },
 
@@ -275,7 +275,7 @@ const vi: typeof en = {
     eyebrow: '// gioi-thieu',
     role: 'Thiết kế website freelance',
     title: 'Thiết kế website cho nhà hàng, homestay và tiệm dịch vụ',
-    lede: 'Tôi làm loại website mang khách tới: khách tìm thấy quán trên Google, xem thực đơn gọn gàng trên điện thoại, bấm một cái là gọi hoặc nhắn Zalo cho anh chị.',
+    lede: 'Tôi thiết kế website với một mục tiêu: mang khách tới. Quán hiện ra khi khách tìm trên Google, thực đơn đọc gọn trên điện thoại, một lần bấm là gọi hoặc nhắn Zalo trực tiếp.',
     ctaPrimary: 'Nhắn Zalo cho tôi',
     ctaSecondary: 'Xem sản phẩm thật',
     statsDelivered: 'website đã bàn giao',
@@ -285,10 +285,10 @@ const vi: typeof en = {
   },
 
   works: {
-    eyebrow: '// san-pham-that',
-    cmd: '$ ls ./san-pham-that',
-    title: 'Năm website đang chạy thật',
-    lede: 'Không phải ảnh mẫu. Mỗi link dưới đây mở ra một website đang được một cơ sở thật sử dụng hằng ngày. Anh chị bấm vào xem trực tiếp.',
+    eyebrow: '// san-pham',
+    cmd: '$ ls ./da-ban-giao',
+    title: 'Năm website đang chạy',
+    lede: 'Cả năm đều đang online. Nên mở bằng điện thoại: bấm thử nút gọi, cuộn thực đơn, xem ảnh tải nhanh chậm ra sao trên mạng 4G — đó đúng là cách khách sẽ gặp một cái quán lần đầu.',
     featured: 'Nổi bật',
     wip: 'Đang xây dựng',
     visit: 'Mở website',
@@ -301,7 +301,7 @@ const vi: typeof en = {
     eyebrow: '// dich-vu',
     cmd: '$ cat ./goi-dich-vu',
     title: 'Ba gói dịch vụ',
-    lede: 'Anh chị chọn gói phù hợp với quán mình. Chưa rõ chọn gói nào thì nhắn tôi, tôi nói thật anh chị cần tới đâu.',
+    lede: 'Ba quy mô cho ba nhu cầu khác nhau. Nếu chưa rõ nên chọn mức nào, liên hệ để tôi tư vấn theo nhu cầu thực tế — không phải theo gói đắt nhất.',
     popular: 'Phổ biến nhất',
     fromLabel: 'Từ',
     timelineLabel: 'Bàn giao',
@@ -326,8 +326,8 @@ const vi: typeof en = {
         'Thực đơn và hình ảnh cập nhật được',
         'SEO địa phương kèm dữ liệu có cấu trúc schema.org',
         'Google Maps và chỉ đường',
-        'Form liên hệ gửi về email của anh chị',
-        'Hướng dẫn ngắn để anh chị tự sửa nội dung',
+        'Form liên hệ gửi trực tiếp về email của quán',
+        'Tài liệu hướng dẫn tự cập nhật nội dung',
       ],
     },
     premium: {
@@ -339,7 +339,7 @@ const vi: typeof en = {
         'Chuyên mục blog hoặc cẩm nang du lịch',
         'Một tính năng riêng: đặt chỗ, thời tiết trực tiếp, tra cứu…',
         'Tối ưu tốc độ tải và hình ảnh',
-        'Thiết lập Google Business Profile cùng anh chị',
+        'Thiết lập hồ sơ Google Business Profile',
       ],
     },
   },
@@ -347,21 +347,21 @@ const vi: typeof en = {
   process: {
     eyebrow: '// quy-trinh',
     cmd: '$ ./quy-trinh --steps 4',
-    title: 'Chúng ta làm việc thế nào',
-    lede: 'Anh chị không cần biết gì về kỹ thuật. Anh chị kể về quán, phần còn lại để tôi lo.',
+    title: 'Quy trình làm việc',
+    lede: 'Không cần kiến thức kỹ thuật. Chỉ cần thông tin về quán và hình ảnh; phần triển khai là việc của tôi.',
     pending: 'đang cập nhật',
     steps: [
       {
         cmd: 'trao-doi-nhu-cau',
         name: 'Trao đổi nhu cầu',
         detail:
-          'Một cuộc gọi hoặc nhắn Zalo. Quán bán gì, khách là ai, anh chị muốn khách vào website rồi làm gì tiếp. Tôi gửi lại bản ghi tóm tắt để hai bên không hiểu lệch nhau.',
+          'Một cuộc gọi hoặc trao đổi qua Zalo: quán bán gì, khách là ai, mục tiêu muốn khách làm gì sau khi vào website. Sau đó tôi gửi lại bản tóm tắt để hai bên thống nhất, tránh hiểu lệch.',
       },
       {
         cmd: 'thiet-ke-ban-nhap',
         name: 'Thiết kế bản nháp',
         detail:
-          'Tôi dựng bố cục và màu sắc rồi gửi anh chị một link thật, mở được ngay trên điện thoại. Anh chị góp ý thoải mái — sửa ở bước này là rẻ nhất.',
+          'Tôi dựng bố cục và màu sắc rồi gửi một đường link mở được ngay trên điện thoại. Đây là lúc góp ý thoải mái nhất: chỉnh ở giai đoạn nháp tốn ít công nhất cho cả hai bên.',
       },
       {
         cmd: 'hoan-thien-noi-dung',
@@ -373,7 +373,7 @@ const vi: typeof en = {
         cmd: 'ban-giao --huong-dan',
         name: 'Bàn giao và hướng dẫn',
         detail:
-          'Website chạy trên tên miền của anh chị. Tôi hướng dẫn anh chị tự sửa nội dung và giao lại toàn bộ tài khoản — website thuộc về anh chị, không phụ thuộc vào tôi.',
+          'Website chạy trên tên miền riêng của quán. Tôi hướng dẫn cách tự cập nhật nội dung và giao lại toàn bộ tài khoản — quyền sở hữu thuộc về quán, không phụ thuộc vào tôi.',
       },
     ],
   },
@@ -382,17 +382,17 @@ const vi: typeof en = {
     eyebrow: '// ban-giao',
     cmd: '$ cat ./khach-nhan-duoc-gi',
     title: 'Khách nhận được gì',
-    lede: 'Cụ thể, đây là những thứ nằm trong tay anh chị khi công việc xong.',
+    lede: 'Danh sách cụ thể những gì được giao lại khi công việc hoàn tất.',
     items: [
       {
         name: 'Tên miền riêng của quán',
         detail:
-          'Địa chỉ .com hoặc .vn mang tên quán anh chị, đăng ký chính chủ — không phải một địa chỉ con nằm nhờ chỗ người khác.',
+          'Địa chỉ .com hoặc .vn mang tên quán, đăng ký chính chủ — không phải một địa chỉ con nằm nhờ trên nền tảng của người khác.',
       },
       {
         name: 'Hosting đã cài đặt sẵn, chạy ổn',
         detail:
-          'Website online 24/7, có ổ khóa HTTPS trên thanh địa chỉ. Tôi cài đặt hết, anh chị không phải chạm tới máy chủ.',
+          'Website online 24/7, có ổ khóa HTTPS trên thanh địa chỉ. Tôi cài đặt và cấu hình toàn bộ; phía quán không phải can thiệp vào máy chủ.',
       },
       {
         name: 'Chạy tốt trên điện thoại',
@@ -402,27 +402,27 @@ const vi: typeof en = {
       {
         name: 'Hiển thị trên Google Maps và tìm kiếm',
         detail:
-          'Khai báo dữ liệu có cấu trúc để Google hiểu đúng quán anh chị, kèm thiết lập hồ sơ doanh nghiệp để khách quanh vùng tìm là ra.',
+          'Khai báo dữ liệu có cấu trúc để Google hiểu đúng ngành nghề và địa chỉ của quán, kèm thiết lập hồ sơ doanh nghiệp để khách quanh vùng tìm là ra.',
       },
       {
         name: 'Nút gọi, Zalo và chỉ đường',
         detail:
-          'Một cái bấm là gọi, một cái bấm là mở Zalo, một cái bấm là hiện đường đi. Khách liên hệ chủ yếu từ mấy nút này.',
+          'Một lần bấm để gọi, một lần bấm để mở Zalo, một lần bấm để hiện chỉ đường. Phần lớn liên hệ đến từ ba nút này.',
       },
       {
-        name: 'Song ngữ nếu anh chị cần',
+        name: 'Song ngữ khi cần',
         detail:
-          'Tiếng Việt và tiếng Anh trên cùng một website, có nút chuyển. Hữu ích cho vùng du lịch và cho quán phục vụ khách ở Mỹ.',
+          'Tiếng Việt và tiếng Anh trên cùng một website, có nút chuyển. Hữu ích cho vùng du lịch và cho quán phục vụ khách nước ngoài.',
       },
       {
         name: 'Hướng dẫn tự sửa nội dung',
         detail:
-          'Một bản hướng dẫn ngắn, viết bằng lời dễ hiểu, cho những thứ anh chị sẽ đổi thường xuyên: giá, giờ mở cửa, ảnh mới.',
+          'Một bản hướng dẫn ngắn, viết bằng lời dễ hiểu, cho những nội dung thay đổi thường xuyên: giá, giờ mở cửa, ảnh mới.',
       },
       {
         name: 'Bảo trì trong thời gian đầu',
         detail:
-          'Sau bàn giao tôi vẫn theo để sửa lỗi và trả lời thắc mắc, anh chị không bị bỏ lại một mình với cái website mới.',
+          'Sau bàn giao tôi vẫn theo để sửa lỗi và trả lời thắc mắc, không để một website vừa nhận phải tự loay hoay vận hành.',
       },
     ],
   },
@@ -434,57 +434,57 @@ const vi: typeof en = {
     items: [
       {
         q: 'Làm một website mất bao lâu?',
-        a: 'Tùy gói, và chủ yếu tùy anh chị gửi nội dung nhanh hay chậm. Thời gian bàn giao ghi rõ ở từng gói phía trên. Thực tế phần lâu nhất không phải code, mà là chờ ảnh và thực đơn.',
+        a: 'Tùy gói, và phụ thuộc nhiều vào tốc độ cung cấp nội dung. Thời gian bàn giao ghi rõ ở từng gói phía trên. Trên thực tế, phần mất thời gian nhất không phải lập trình mà là chờ hình ảnh và thực đơn.',
       },
       {
         q: 'Tôi có cần tự chuẩn bị ảnh và nội dung không?',
-        a: 'Anh chị gửi cái đang có: ảnh chụp bằng điện thoại, ảnh chụp tờ thực đơn, vài câu kể về quán. Tôi viết và biên tập lại câu chữ, sắp xếp lại hình. Nếu ảnh chưa dùng được tôi nói thẳng và chỉ anh chị chụp lại thế nào — một tấm ảnh món ăn ngon mắt có sức nặng hơn mọi mẹo thiết kế.',
+        a: 'Chỉ cần gửi những gì đang có: ảnh chụp bằng điện thoại, ảnh tờ thực đơn, vài dòng giới thiệu về quán. Tôi biên tập lại câu chữ và sắp xếp hình ảnh. Nếu ảnh chưa đạt, tôi sẽ nói rõ và hướng dẫn cách chụp lại — một tấm ảnh món ăn hấp dẫn có sức thuyết phục hơn mọi thủ pháp thiết kế.',
       },
       {
         q: 'Sau này tôi tự sửa được không?',
-        a: 'Được, với những thứ hay đổi: giá, giờ mở cửa, ảnh mới, món mới. Lúc bàn giao tôi hướng dẫn trực tiếp qua cuộc gọi và để lại bản hướng dẫn viết sẵn. Còn thay đổi lớn về cấu trúc thì anh chị nhắn tôi.',
+        a: 'Được, với những nội dung thay đổi thường xuyên: giá, giờ mở cửa, ảnh mới, món mới. Lúc bàn giao tôi hướng dẫn trực tiếp qua cuộc gọi và để lại tài liệu viết sẵn. Với thay đổi lớn về cấu trúc, chỉ cần liên hệ lại.',
       },
       {
         q: 'Chi phí duy trì hằng năm bao nhiêu?',
-        a: 'Mỗi năm anh chị trả tên miền và hosting: {{upkeep}}. Không có phí hằng tháng nào trả cho tôi. Hai khoản đó anh chị đứng tên và trả trực tiếp, để website luôn là của anh chị.',
+        a: 'Chi phí hằng năm gồm tên miền và hosting: {{upkeep}}. Không có khoản phí hằng tháng nào trả cho tôi. Hai khoản trên do phía quán đứng tên và thanh toán trực tiếp, để website luôn thuộc quyền sở hữu của quán.',
       },
       {
         q: 'Tôi đã có Facebook rồi thì có cần website không?',
-        a: 'Hai thứ làm hai việc khác nhau. Facebook chạm tới người đã theo dõi quán. Website chạm tới người đang đứng gần đây và gõ "phở gần tôi" trên Google — người đó sẽ không lướt trang Facebook của anh chị. Website còn cho khách xem trọn thực đơn một lượt, không vùi địa chỉ dưới đống bài đăng, và không mất theo nếu trang bị khóa. Anh chị cứ giữ Facebook; website chạy song song với nó.',
+        a: 'Hai kênh phục vụ hai mục đích khác nhau. Facebook tiếp cận người đã theo dõi quán. Website tiếp cận người đang ở gần và gõ "phở gần đây" trên Google — người đó sẽ không tìm đến trang Facebook. Website còn cho xem trọn thực đơn trong một lượt, không vùi địa chỉ dưới các bài đăng, và không mất theo nếu trang bị khóa. Facebook vẫn nên giữ; website chạy song song.',
       },
       {
         q: 'Nếu tôi không hài lòng thì sao?',
-        a: 'Anh chị xem bản nháp trước khi tôi dựng toàn bộ, nên có lệch hướng thì chỉnh sớm chứ không phải chỉnh lúc cuối. Sửa trong giai đoạn bản nháp là phần việc đã tính, không tính thêm. Nếu xem bản nháp rồi anh chị quyết định không làm nữa thì mình dừng ở đó, anh chị không phải trả thêm.',
+        a: 'Bản nháp được gửi trước khi tôi dựng toàn bộ, nên lệch hướng sẽ được chỉnh ngay từ đầu thay vì lúc kết thúc. Việc sửa trong giai đoạn nháp đã nằm trong phạm vi công việc, không phát sinh thêm. Nếu sau khi xem nháp mà quyết định không tiếp tục, công việc dừng tại đó và không phát sinh chi phí.',
       },
       {
         q: 'Anh có làm cho quán ở Hoa Kỳ không?',
-        a: 'Có. Ba trong năm website phía trên là của cơ sở tại North Carolina. Mình trao đổi qua Zalo hoặc Messenger, lệch giờ không thành vấn đề — tôi gửi bản nháp để anh chị mở điện thoại lúc nào cũng xem được.',
+        a: 'Có. Ba trong năm website phía trên thuộc các cơ sở tại North Carolina. Việc trao đổi diễn ra qua Zalo hoặc Messenger; lệch múi giờ không gây trở ngại vì bản nháp luôn ở dạng đường link, mở xem được bất cứ lúc nào.',
       },
     ],
   },
 
   contact: {
     eyebrow: '// lien-he',
-    title: 'Kể tôi nghe về quán của anh chị',
-    lede: 'Nhanh nhất là nhắn Zalo — gửi tên quán và anh chị bán gì, tôi trả lời thật là anh chị cần tới đâu và chi phí khoảng bao nhiêu.',
+    title: 'Trao đổi về website cho quán',
+    lede: 'Cách nhanh nhất là nhắn Zalo: gửi tên quán và loại hình kinh doanh, tôi trả lời thẳng về phạm vi cần làm và khoảng chi phí.',
     zalo: 'Nhắn Zalo',
     call: 'Gọi điện',
     emailLabel: 'Email',
     phoneLabel: 'Điện thoại / Zalo',
     formTitle: 'Hoặc để lại thông tin ở đây',
     formNote: 'Tôi trả lời trong vòng một ngày làm việc.',
-    fieldName: 'Tên anh chị',
+    fieldName: 'Họ và tên',
     fieldPhone: 'Số điện thoại',
     fieldBusiness: 'Loại hình kinh doanh',
     fieldBusinessPlaceholder: 'Nhà hàng, homestay, tiệm nail…',
     fieldNote: 'Ghi chú thêm',
-    fieldNotePlaceholder: 'Anh chị cần gì, cần xong khi nào…',
+    fieldNotePlaceholder: 'Nhu cầu cụ thể, thời điểm cần hoàn thành…',
     submit: 'Gửi',
     sending: 'Đang gửi…',
-    sent: 'Cảm ơn anh chị — tôi đã nhận được và sẽ trả lời trong vòng một ngày làm việc.',
-    error: 'Có lỗi khi gửi. Anh chị nhắn giúp tôi qua Zalo nhé.',
+    sent: 'Đã nhận được thông tin. Tôi sẽ phản hồi trong vòng một ngày làm việc.',
+    error: 'Gửi không thành công. Vui lòng liên hệ qua Zalo.',
     formDisabled:
-      'Form chưa được kết nối. Anh chị dùng nút Zalo hoặc số điện thoại phía trên nhé — hai cách đó đến tôi trực tiếp.',
+      'Form chưa được kết nối. Vui lòng dùng nút Zalo hoặc số điện thoại phía trên — hai kênh này đến trực tiếp.',
     required: 'bắt buộc',
   },
 
