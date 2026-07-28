@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Mail, MessageCircle, Phone, Send } from 'lucide-react';
 import { useI18n } from '../../i18n';
 import { CONTACT, FORMSPREE_ENDPOINT, FORM_SUBJECT } from '../../data/config';
+import { asset } from '../../lib/asset';
 import { Reveal } from '../Reveal';
 import { SectionHead } from '../SectionHead';
 
@@ -154,6 +155,28 @@ export function Contact() {
                 </a>
               </div>
 
+              <div className="mt-5 border-t border-line pt-5 text-center">
+                <a
+                  href={CONTACT.zalo}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`${t.contact.zalo}: ${CONTACT.zaloPhoneDisplay}`}
+                  className="inline-block rounded-lg transition-transform hover:scale-[1.02]"
+                >
+                  <img
+                    src={asset('images/zalo-bao-qr.png')}
+                    alt={t.contact.zaloQrAlt}
+                    width={336}
+                    height={408}
+                    loading="lazy"
+                    className="mx-auto w-full max-w-[13rem] rounded-lg border border-line"
+                  />
+                </a>
+                <p className="mx-auto mt-3 max-w-xs text-[0.8rem] leading-relaxed text-muted">
+                  {t.contact.zaloScan}
+                </p>
+              </div>
+
               <dl className="mt-6 space-y-3 border-t border-line pt-5 font-mono text-[0.8rem]">
                 <div>
                   <dt className="text-muted">{t.contact.phoneLabel}</dt>
@@ -163,6 +186,19 @@ export function Contact() {
                       className="text-fg transition-colors hover:text-accent"
                     >
                       {CONTACT.phoneDisplay}
+                    </a>
+                  </dd>
+                </div>
+                <div>
+                  <dt className="text-muted">{t.contact.zaloLabel}</dt>
+                  <dd className="mt-0.5">
+                    <a
+                      href={CONTACT.zalo}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-fg transition-colors hover:text-accent"
+                    >
+                      {CONTACT.zaloPhoneDisplay}
                     </a>
                   </dd>
                 </div>

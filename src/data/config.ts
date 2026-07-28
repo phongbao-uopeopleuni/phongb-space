@@ -11,8 +11,9 @@ export const CONTACT = {
   phoneDisplay: '077 575 3003',
   // Dang E.164 dung cho href tel: va schema.org, quay dung ca o ngoai Viet Nam
   phoneE164: '+84775753003',
-  // Zalo dung so noi dia khong co khoang trang
-  zalo: 'https://zalo.me/0775753003',
+  // Zalo dung so noi dia khong co khoang trang trong URL
+  zaloPhoneDisplay: '035 671 2494',
+  zalo: 'https://zalo.me/0356712494',
   github: 'https://github.com/phongbao-uopeopleuni',
   facebook: 'https://www.facebook.com/pbao280/',
 } as const;

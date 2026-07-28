@@ -48,7 +48,7 @@ const en = {
   works: {
     eyebrow: '// san-pham',
     cmd: '$ ls ./da-ban-giao',
-    title: 'Five websites, currently live',
+    title: 'Projects I am currently handling',
     lede: 'All five are live. Best opened on a phone: tap the call button, scroll the menu, watch how the photos load on mobile data — that is exactly how a customer meets a shop for the first time.',
     featured: 'Featured',
     wip: 'Work in progress',
@@ -71,7 +71,7 @@ const en = {
     priceNote:
       'Estimated ranges. The final figure is agreed once the scope is clear — how many pages, how much content, whether a custom feature is involved.',
     pending: 'updating',
-    cta: 'Ask about this package',
+    cta: 'Get advice',
     basic: {
       name: 'Landing page',
       // Nhan trong ngoac vuong: noi dieu ten goi khong noi, tranh lap lai tieu de
@@ -225,10 +225,6 @@ const en = {
         q: 'What if I am not happy with it?',
         a: 'You see a draft before I build the whole thing, so we correct direction early instead of at the end. Revisions during the draft stage are part of the work, not extra. If after the draft you decide not to continue, we stop there and you owe nothing further.',
       },
-      {
-        q: 'Do you work with shops in the United States?',
-        a: 'Yes. Three of the five sites above are for businesses in North Carolina. We work over Zalo or Messenger, and the time difference has not been a problem — I send drafts you can review whenever you open your phone.',
-      },
     ],
   },
 
@@ -237,9 +233,12 @@ const en = {
     title: 'Let us talk about the website',
     lede: 'The fastest route is Zalo: send the shop name and the type of business, and I will reply straight about the scope needed and the rough cost.',
     zalo: 'Message on Zalo',
+    zaloLabel: 'Zalo',
+    zaloScan: 'Scan this QR code or tap it to connect on Zalo',
+    zaloQrAlt: "Bao's Zalo QR code",
     call: 'Call',
     emailLabel: 'Email',
-    phoneLabel: 'Phone / Zalo',
+    phoneLabel: 'Phone',
     formTitle: 'Or leave your details here',
     formNote: 'I reply within one working day.',
     fieldName: 'Full name',
@@ -303,7 +302,7 @@ const vi: typeof en = {
   works: {
     eyebrow: '// san-pham',
     cmd: '$ ls ./da-ban-giao',
-    title: 'Năm website đang chạy',
+    title: 'Các dự án đang đảm nhiệm',
     lede: 'Cả năm đều đang online. Nên mở bằng điện thoại: bấm thử nút gọi, cuộn thực đơn, xem ảnh tải nhanh chậm ra sao trên mạng 4G — đó đúng là cách khách sẽ gặp một cái quán lần đầu.',
     featured: 'Nổi bật',
     wip: 'Đang xây dựng',
@@ -326,7 +325,7 @@ const vi: typeof en = {
     priceNote:
       'Giá dự kiến. Con số cuối chốt sau khi rõ phạm vi công việc — bao nhiêu trang, lượng nội dung, có tính năng riêng hay không.',
     pending: 'đang cập nhật',
-    cta: 'Hỏi về gói này',
+    cta: 'Tư vấn',
     basic: {
       name: 'Landing page',
       tag: '1 trang',
@@ -479,10 +478,6 @@ const vi: typeof en = {
         q: 'Nếu tôi không hài lòng thì sao?',
         a: 'Bản nháp được gửi trước khi tôi dựng toàn bộ, nên lệch hướng sẽ được chỉnh ngay từ đầu thay vì lúc kết thúc. Việc sửa trong giai đoạn nháp đã nằm trong phạm vi công việc, không phát sinh thêm. Nếu sau khi xem nháp mà quyết định không tiếp tục, công việc dừng tại đó và không phát sinh chi phí.',
       },
-      {
-        q: 'Anh có làm cho quán ở Hoa Kỳ không?',
-        a: 'Có. Ba trong năm website phía trên thuộc các cơ sở tại North Carolina. Việc trao đổi diễn ra qua Zalo hoặc Messenger; lệch múi giờ không gây trở ngại vì bản nháp luôn ở dạng đường link, mở xem được bất cứ lúc nào.',
-      },
     ],
   },
 
@@ -491,9 +486,12 @@ const vi: typeof en = {
     title: 'Trao đổi về website cho quán',
     lede: 'Cách nhanh nhất là nhắn Zalo: gửi tên quán và loại hình kinh doanh, tôi trả lời thẳng về phạm vi cần làm và khoảng chi phí.',
     zalo: 'Nhắn Zalo',
+    zaloLabel: 'Zalo',
+    zaloScan: 'Quét mã QR hoặc chạm vào mã để kết nối Zalo',
+    zaloQrAlt: 'Mã QR Zalo của Bảo',
     call: 'Gọi điện',
     emailLabel: 'Email',
-    phoneLabel: 'Điện thoại / Zalo',
+    phoneLabel: 'Điện thoại',
     formTitle: 'Hoặc để lại thông tin ở đây',
     formNote: 'Tôi trả lời trong vòng một ngày làm việc.',
     fieldName: 'Họ và tên',
